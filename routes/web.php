@@ -110,3 +110,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/tentangafterlogin', function () {
     return view('tentangafterlogin');
 })->name('tentangafterlogin');
+
+Route::middleware('auth')->get('/checkharian', function () {
+    return view('checkharian');
+})->name('checkharian');
+

@@ -21,7 +21,9 @@
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
-                <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
+                <li> 
+                    <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a>
+                </li>
             </ul>
             
             <!-- Header Right (User Info) -->
@@ -47,7 +49,7 @@
 
         <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
             <ul class="space-y-4 text-gray-700 font-medium">
-                <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
+                <li><a href="{{url('/')}}" class="hover:text-red-600 transition">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
@@ -80,7 +82,7 @@
                 </a>
 
                 <!-- Check Harian -->
-                <a href="#" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+                <a href="{{ url('/checkharian') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                     <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
                     <span>Check Harian</span>
                 </a>
@@ -100,12 +102,55 @@
         </div>
     </section>
 
+    <!-- Dashboard Content -->
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Sidebar Menu -->
+            <div class="bg-white rounded-lg shadow-lg p-4">
+                @auth
+                    <div class="text-center">
+                        <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-16 h-16 rounded-full mx-auto mb-4">
+                        <span class="block text-xl font-semibold">{{ Auth::user()->username }}</span>
+                        <p class="text-gray-600">{{ Auth::user()->role }}</p>
+                    </div>
+                @endauth
 
+            </div>
 
+            <!-- Profile and Actions Section -->
+            <div class="col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Data Pribadi</h2>
+                @auth
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Nama</span>
+                            <span class="text-gray-600">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Alamat</span>
+                            <span class="text-gray-600">{{ Auth::user()->address }}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Nomor Handphone</span>
+                            <span class="text-gray-600">{{ Auth::user()->phone }}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Jenis Kelamin</span>
+                            <span class="text-gray-600">{{ Auth::user()->gender }}</span>
+                        </div>
+                    </div>
 
-       <!-- Footer -->
+                    <div class="flex justify-end mt-6">
+                        <button class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Simpan</button>
+                        <button class="ml-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-300">Batal</button>
+                    </div>
+                @endauth
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="text-white">
-        <!-- Bagian atas footer dengan warna biru langit -->
         <div class="py-8 px-4" style="background-color: #0065A4;">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -135,7 +180,6 @@
             </div>
         </div>
 
-        <!-- Bagian bawah footer dengan warna biru tua -->
         <div class="py-4 text-center text-sm" style="background-color: #004b6b;">
             <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
         </div>
