@@ -80,9 +80,11 @@
                 </a>
 
                 <!-- Check Harian -->
-                <a href="{{ url('/checkharian') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
-                    <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
-                    <span>Check Harian</span>
+<a href="{{ url('/checkharian') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+    <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
+    <span>Check Harian</span>
+</a>
+
                 </a>
 
                 <!-- Pengaturan -->
