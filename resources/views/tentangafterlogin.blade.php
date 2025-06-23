@@ -19,12 +19,23 @@
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-                <li><a href="{{url('/')}}" class="hover:text-red-600">Beranda</a></li>
-                <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
+                <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
+                <li><a href="{{ url('/tentangaffterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
-                <li><a href="{{ route('login') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color: #0065A4;">Daftar</a></li>
+                <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
+            
+            <!-- Header Right (User Info) -->
+            <div class="flex items-center space-x-4">
+                @if (Auth::check())
+                    <span class="text-gray-900">Halo, {{ Auth::user()->name }}Selamat Datang!</span>
+                
+                    <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-8 h-8 rounded-full">
+                @else
+                    <a href="{{ route('login') }}" class="text-gray-900 hover:text-red-600">Login</a>
+                @endif
+            </div>
         </div>
         
         <div class="md:hidden">
@@ -39,27 +50,23 @@
 
         <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
         <ul class="space-y-4 text-gray-700 font-medium">
-            <li><a href="{{url('/')}}" class="hover:text-red-600">Beranda</a></li>
-            <li><a href="{{ url('/tentang') }}" class="hover:text-red-600 transition">Tentang</a></li>
+            <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
+            <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
             <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
             <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
-            <li><a href="{{ url('/login') }}" class="hover:text-red-600 transition">Login</a></li>
-            <li><a href="{{ url('/register') }}" class="hover:text-red-600 transition">Daftar</a></li>
         </ul>
     </div>
 
     </nav>
-
     <!-- Hero Section -->
     <section class="hero bg-[#0f172a] text-white py-20 px-4 flex flex-col md:flex-row items-center">
         <div class="w-full md:w-1/2">
             <img src="images/fotopku.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-lg shadow-lg" />
         </div>
-<div class="w-full md:w-1/2 text-center md:text-left mt-8 md:mt-0 pl-8">
-    <h1 class="text-4xl font-semibold mb-4">Selamat Datang di PKU Bantul</h1>
-    <p class="text-lg">Kami berkomitmen untuk memberikan layanan kesehatan terbaik untuk masyarakat Bantul.</p>
-</div>
-
+        <div class="w-full md:w-1/2 text-center md:text-left mt-8 md:mt-0">
+            <h1 class="text-4xl font-semibold mb-4">Selamat Datang di PKU Bantul</h1>
+            <p class="text-lg">Kami berkomitmen untuk memberikan layanan kesehatan terbaik untuk masyarakat Bantul.</p>
+        </div>
     </section>
 
 <!-- Tentang Kami Section -->
