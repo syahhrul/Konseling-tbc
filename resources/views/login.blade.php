@@ -64,7 +64,7 @@
     <div class="card-wrapper">
       <!-- FORM LOGIN -->
       <div class="login-container">
-      
+
         <!-- Alert Success -->
         @if (session('success'))
         <div class="alert alert-success" style="background-color: #4CAF50; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">

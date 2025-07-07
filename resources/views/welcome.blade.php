@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PKU Bantul - Penanggulangan TBC</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans text-gray-800" style="background-color: #87CEFA;">
 
+<body class="font-sans text-gray-800" style="background-color: #87CEFA;">
 
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
@@ -18,7 +19,7 @@
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-                <li><a href="{{url('/')}}" class="hover:text-red-600">Beranda</a></li>
+                <li><a href="{{ url('/') }}" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li>
@@ -40,7 +41,7 @@
                 </li>
             </ul>
         </div>
-        
+
         <div class="md:hidden">
             <button id="menuBtn" class="focus:outline-none">
                 <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -53,7 +54,7 @@
 
         <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
             <ul class="space-y-4 text-gray-700 font-medium">
-                <li><a href="{{url('/')}}" class="hover:text-red-600 transition">Beranda</a></li>
+                <li><a href="{{ url('/') }}" class="hover:text-red-600 transition">Beranda</a></li>
                 <li><a href="{{ url('/tentang') }}" class="hover:text-red-600 transition">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
                 <li>
@@ -72,13 +73,12 @@
     <!-- Hero Section with Carousel -->
     <section class="hero bg-[#0f172a] text-white text-center py-6">
         <div class="relative max-w-4xl mx-auto">
-            <!-- Carousel using basic Tailwind + some minimal JS -->
             <div class="overflow-hidden rounded-lg">
                 <div id="carousel-inner" class="flex transition-transform duration-700">
                     <img src="{{ asset('images/slide1.png') }}" alt="Slide 1" class="w-[500px] object-contain" />
                     <img src="{{ asset('images/hp1.jpg') }}" alt="Slide 2" class="w-[500px] object-contain" />
-                    <img src="{{ asset('images/pameran-pku.jpg')}}" alt="Slide 3" class="w-[500px] object-contain" />
-                    <img src="{{ asset('images/slide4.png')}}" alt="Slide 4" class="w-[500px] object-contain" />
+                    <img src="{{ asset('images/pameran-pku.jpg') }}" alt="Slide 3" class="w-[500px] object-contain" />
+                    <img src="{{ asset('images/slide4.png') }}" alt="Slide 4" class="w-[500px] object-contain" />
                     <img src="{{ asset('images/slide1.png') }}" alt="Clone Slide 1" class="w-[500px] object-contain" />
                 </div>
             </div>
@@ -87,14 +87,20 @@
         </div>
     </section>
 
-    <!-- TBC Section -->
+<!-- TBC Section -->
     <section class="section py-12">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-4 max-w-6xl">
             <div class="md:w-1/2 text-gray-800">
                 <p class="leading-relaxed text-lg">
-                    Tuberkulosis (TBC) adalah penyakit menular yang disebabkan oleh bakteri Mycobacterium tuberculosis dan menyerang paru-paru...
+                    Tuberkulosis (TBC) adalah penyakit menular yang disebabkan oleh bakteri Mycobacterium tuberculosis
+                    dan menyerang paru-paru. Penyakit ini menyebar melalui udara saat penderita TBC batuk atau bersin.
+                    Akibatnya, orang di sekitarnya bisa menghirup bakteri dan terinfeksi. TBC tergolong penyakit yang
+                    dapat dicegah dan disembuhkan jika didiagnosis dan diobati dengan benar dan tepat waktu. Penanganan
+                    TBC memerlukan kerjasama dari berbagai pihak dan edukasi kepada masyarakat luas.
                 </p>
-                <a href="{{ url('/pusatinfotbc') }}" class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">Lihat Selengkapnya</a>
+                <a href={{ url('/pusatinfotbc') }}
+                    class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">Lihat
+                    Selengkapnya</a>
             </div>
             <div class="md:w-5/12 text-center">
                 <img src="{{ asset('images/paru-paru.jpg') }}" alt="Paru-paru" class="mx-auto w-72 object-contain" />
@@ -107,7 +113,9 @@
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-4 max-w-6xl">
             <div class="md:w-1/2 text-gray-900">
                 <h4 class="mb-4 text-2xl font-semibold">Tentang Kami</h4>
-                <p class="leading-relaxed text-lg">Kami bekerja sama dan mengembangkan kemitraan dengan Pemerintah...</p>
+                <p class="leading-relaxed text-lg">
+                    Kami bekerja sama dan mengembangkan kemitraan dengan Pemerintah, organisasi internasional dan organisasi lokal dalam meningkatkan peran serta masyarakat dalam upaya penanggulangan tuberkulosis secara efektif dan berkelanjutan.
+                </p>
                 <a href="{{ url('/tentang') }}" class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">Selengkapnya</a>
             </div>
             <div class="md:w-5/12 text-center">
@@ -156,23 +164,6 @@
         const mobileMenu = document.getElementById("mobileMenu");
         menuBtn.addEventListener("click", () => {
             mobileMenu.classList.toggle("hidden");
-        });
-    </script>
-
-    <!-- Script Carousel -->
-    <script>
-        const carouselInner = document.getElementById('carousel-inner');
-        const totalItems = carouselInner.children.length;
-        let currentIndex = 0;
-
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
-        });
-
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalItems;
-            carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
         });
     </script>
 
