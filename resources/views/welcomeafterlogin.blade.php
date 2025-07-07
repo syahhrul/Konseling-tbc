@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PKU Bantul - Penanggulangan TBC</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  {{-- <script src="{{ asset('js/slider.js') }}"></script> --}}
-
 </head>
 
 <body class="font-sans text-gray-800" style="background-color: #87CEFA;">
@@ -21,40 +19,17 @@
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
-=======
-                <li><a href="#" class="hover:text-red-600">Beranda</a></li>
-                <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
-                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
-                <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
->>>>>>> f830dc3 (Initial commit)
-=======
-                <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
-                <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
-                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
-                <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
->>>>>>> fa4d7d4 (tambah dashboard)
                 <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
             
             <!-- Header Right (User Info) -->
             <div class="flex items-center space-x-4">
                 @if (Auth::check())
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
-=======
-                    <span class="text-gray-900">Halo, {{ Auth::user()->name }}</span>
->>>>>>> f830dc3 (Initial commit)
-=======
-                    <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
->>>>>>> fa4d7d4 (tambah dashboard)
-                
                     <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-8 h-8 rounded-full">
                 @else
                     <a href="{{ route('login') }}" class="text-gray-900 hover:text-red-600">Login</a>
@@ -73,48 +48,28 @@
         </div>
 
         <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
-        <ul class="space-y-4 text-gray-700 font-medium">
-            <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
-            <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
-<li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
-
-=======
-            <li><a href="{{ url('/tentang') }}" class="hover:text-red-600 transition">Tentang</a></li>
-            <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
-            <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
->>>>>>> f830dc3 (Initial commit)
-=======
-            <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
-            <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
-<li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
-
->>>>>>> fa4d7d4 (tambah dashboard)
-        </ul>
-    </div>
-
+            <ul class="space-y-4 text-gray-700 font-medium">
+                <li><a href="/welcomeafterlogin" class="hover:text-red-600 transition">Beranda</a></li>
+                <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
+                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
+                <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section with Carousel -->
     <section class="hero bg-[#0f172a] text-white text-center py-6">
         <div class="relative max-w-4xl mx-auto">
-            <!-- Carousel using basic Tailwind + some minimal JS -->
             <div class="overflow-hidden rounded-lg">
                 <div id="carousel-inner" class="flex transition-transform duration-700">
                     <img src="{{ asset('images/slide1.png') }}" alt="Slide 1" class="w-[500px] object-contain" />
                     <img src="{{ asset('images/hp1.jpg') }}" alt="Slide 2" class="w-[500px] object-contain" />
                     <img src="{{ asset('images/pameran-pku.jpg')}}" alt="Slide 3"class="w-[500px] object-contain" />
                     <img src="{{ asset('images/slide4.png')}}" alt="Slide 4"class="w-[500px] object-contain" />
-
-                    <!-- Duplikat slide pertama di akhir -->
                     <img src="{{ asset('images/slide1.png') }}" alt="Clone Slide 1" class="w-[500px] object-contain" />
                 </div>
-
             </div>
 
-            <!-- Buttons -->
             <button id="prevBtn"
                 class="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75">
                 ‹
@@ -128,8 +83,7 @@
 
     <!-- TBC Section -->
     <section class="section py-12">
-        <div
-            class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-4 max-w-6xl">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-4 max-w-6xl">
             <div class="md:w-1/2 text-gray-800">
                 <p class="leading-relaxed text-lg">
                     Tuberkulosis (TBC) adalah penyakit menular yang disebabkan oleh bakteri Mycobacterium tuberculosis
@@ -150,8 +104,7 @@
 
     <!-- Tentang Kami Section -->
     <section class="section bg-blue-100 py-12">
-        <div
-            class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-4 max-w-6xl">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-4 max-w-6xl">
             <div class="md:w-1/2 text-gray-900">
                 <h4 class="mb-4 text-2xl font-semibold">Tentang Kami</h4>
                 <p class="leading-relaxed text-lg">
@@ -159,18 +112,7 @@
                     organisasi lokal dalam meningkatkan peran serta masyarakat dalam upaya penanggulangan tuberkulosis
                     secara efektif dan berkelanjutan.
                 </p>
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <a href="/tentang" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
-
-=======
-                <a href="#"
-                    class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
->>>>>>> f830dc3 (Initial commit)
-=======
-                <a href="/tentang" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
-
->>>>>>> fa4d7d4 (tambah dashboard)
             </div>
             <div class="md:w-5/12 text-center">
                 <img src="{{ asset('images/dinkes.jpg') }}" alt="Dinas Kesehatan"
@@ -180,69 +122,64 @@
     </section>
 
     <!-- Footer -->
-  <footer class="text-white">
-  <!-- Bagian atas footer dengan warna biru langit -->
-  <div class="py-8 px-4" style="background-color: #0065A4;">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-       <p class="text-justify text-[12px] text-white">
-  <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
-</p>
-      </div>
-      <div class="pl-20">
-        <h3 class="text-white text-[14px] font-bold mb-2">Kontak Kami</h3>
-        <p class="text-sm">
-          Jl. Jend. Sudirman No.124,<br>
-          Nyangkringan, Bantul, Kec. Bantul,<br>
-          Kabupaten Bantul,<br>
-          Daerah Istimewa Yogyakarta<br>
-          55711
-        </p>
-      </div>
-      <div>
-  <h3 class="font-bold mb-2">Temukan Kami</h3>
-  <div class="flex space-x-4">
-    <a href="#"><img src="images/logo_facebook.png" alt="Facebook" class="w-6 h-6 object-contain"></a>
-    <a href="#"><img src="images/logo_instagram.png" alt="Instagram" class="w-6 h-6 object-contain"></a>
-    <a href="#"><img src="images/logo_whatsapp.png" alt="WhatsApp" class="w-6 h-6 object-contain"></a>
-    <a href="#"><img src="images/logo_youtube.png" alt="YouTube" class="w-6 h-6 object-contain"></a>
-  </div>
-</div>
+    <footer class="text-white">
+        <div class="py-8 px-4" style="background-color: #0065A4;">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <p class="text-justify text-[12px] text-white">
+                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
+                    </p>
+                </div>
+                <div class="pl-20">
+                    <h3 class="text-white text-[14px] font-bold mb-2">Kontak Kami</h3>
+                    <p class="text-sm">
+                        Jl. Jend. Sudirman No.124,<br>
+                        Nyangkringan, Bantul, Kec. Bantul,<br>
+                        Kabupaten Bantul,<br>
+                        Daerah Istimewa Yogyakarta<br>
+                        55711
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Temukan Kami</h3>
+                    <div class="flex space-x-4">
+                        <a href="#"><img src="images/logo_facebook.png" alt="Facebook" class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_instagram.png" alt="Instagram" class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_whatsapp.png" alt="WhatsApp" class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_youtube.png" alt="YouTube" class="w-6 h-6 object-contain"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-4 text-center text-sm" style="background-color: #004b6b;">
+            <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
+        </div>
+    </footer>
 
-    </div>
-  </div>
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
 
-  <!-- Bagian bawah footer dengan warna biru tua -->
-  <div class="py-4 text-center text-sm" style="background-color: #004b6b;">
-    <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
-  </div>
-</footer>
+    <!-- Script Carousel -->
+    <script>
+        const carouselInner = document.getElementById('carousel-inner');
+        const totalItems = carouselInner.children.length;
+        let currentIndex = 0;
 
-<script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-    });
-</script>
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
+        });
 
-<!-- Script Carousel -->
-<script>
-    // Basic carousel logic for Tailwind version
-    const carouselInner = document.getElementById('carousel-inner');
-    const totalItems = carouselInner.children.length;
-    let currentIndex = 0;
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalItems;
-        carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
-    });
-</script>
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
+        });
+    </script>
 
 </body>
 

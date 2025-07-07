@@ -8,15 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 <body class="font-sans text-gray-800" style="background-color: #87CEFA;">
-=======
-<body class="font-sans bg-white text-gray-800">
->>>>>>> f830dc3 (Initial commit)
-=======
-<body class="font-sans text-gray-800" style="background-color: #87CEFA;">
->>>>>>> fa4d7d4 (tambah dashboard)
 
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
@@ -26,16 +18,8 @@
                 <img src="{{ asset('images/logopku.png') }}" alt="Logo PKU" class="h-10" />
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-=======
-            <ul class="hidden md:flex space-x-8 text-gray-700">
->>>>>>> f830dc3 (Initial commit)
-=======
-            <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
->>>>>>> fa4d7d4 (tambah dashboard)
-                <li><a href="{{ url(path: '/') }}" class="hover:text-red-600">Beranda</a></li>
+                <li><a href="{{ url('/') }}" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
@@ -44,67 +28,27 @@
     </nav>
 
     <!-- Hero Section -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fa4d7d4 (tambah dashboard)
-     <section class="relative bg-cover bg-center text-white text-center py-20 px-16" style="background-image: url('/images/laber_pusattbc.png');">
-    <div class="absolute inset-0 bg-[#0f172a]/35"></div> <!-- Overlay -->
-    <div class="relative z-10 flex flex-col justify-center items-center h-full">
-        <h1 class="text-4xl font-bold mb-6">Pusat Informasi TBC</h1>
-        <p class="text-lg max-w-2xl mx-auto">
-            Dapatkan informasi lengkap tentang Tuberkulosis (TBC), gejala, pencegahan, pengobatan, dan layanan yang
-            tersedia di PKU Bantul.
-        </p>
-    </div>
-</section>
-
-<<<<<<< HEAD
-=======
-    <section class="relative bg-[url('/images/paru-paru.jpg')] bg-cover bg-center text-white text-center py-20 px-4">
-        <div class="absolute inset-0 bg-[#0f172a]/70"></div> <!-- Overlay -->
-        <div class="relative z-10">
-            <h1 class="text-4xl font-bold mb-4">Pusat Informasi TBC</h1>
+    <section class="relative bg-cover bg-center text-white text-center py-20 px-16" style="background-image: url('/images/laber_pusattbc.png');">
+        <div class="absolute inset-0 bg-[#0f172a]/35"></div> <!-- Overlay -->
+        <div class="relative z-10 flex flex-col justify-center items-center h-full">
+            <h1 class="text-4xl font-bold mb-6">Pusat Informasi TBC</h1>
             <p class="text-lg max-w-2xl mx-auto">
                 Dapatkan informasi lengkap tentang Tuberkulosis (TBC), gejala, pencegahan, pengobatan, dan layanan yang
                 tersedia di PKU Bantul.
             </p>
         </div>
     </section>
->>>>>>> f830dc3 (Initial commit)
-=======
->>>>>>> fa4d7d4 (tambah dashboard)
-
 
     <!-- TBC Information Tab Navigation -->
     <section class="max-w-6xl mx-auto bg-white rounded-lg shadow-md py-8 px-6">
 
         <!-- Navbar mini sticky -->
         <nav class="flex space-x-4 overflow-x-auto pb-4 border-b border-gray-300 sticky top-0 bg-white z-20">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fa4d7d4 (tambah dashboard)
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="deskripsi">Deskripsi</button>
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="penyebab">Penyebab</button>
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="gejala">Gejala</button>
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap"
-<<<<<<< HEAD
-                data-target="pengobatan">Pengobatan</button>
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap"
-=======
-            <button class="tab-btn px-4 py-2 text-gray-700 whitespace-nowrap" data-target="deskripsi">Deskripsi</button>
-            <button class="tab-btn px-4 py-2 text-gray-700 whitespace-nowrap" data-target="penyebab">Penyebab</button>
-            <button class="tab-btn px-4 py-2 text-gray-700 whitespace-nowrap" data-target="gejala">Gejala</button>
-            <button class="tab-btn px-4 py-2 text-gray-700 whitespace-nowrap"
-                data-target="pengobatan">Pengobatan</button>
-            <button class="tab-btn px-4 py-2 text-gray-700 whitespace-nowrap"
->>>>>>> f830dc3 (Initial commit)
-=======
-                data-target="pengobatan">Pengobatan</button>
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap"
->>>>>>> fa4d7d4 (tambah dashboard)
-                data-target="pencegahan">Pencegahan</button>
+            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="pengobatan">Pengobatan</button>
+            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="pencegahan">Pencegahan</button>
         </nav>
 
         <!-- Sections -->
@@ -124,7 +68,7 @@
                     minimal enam bulan. Pemerintah Indonesia menyediakan obat TBC secara gratis melalui program DOTS
                     untuk memastikan penderita menjalani pengobatan sampai tuntas. Bila tidak diobati dengan benar,
                     TBC bisa berkembang menjadi TBC resistan obat (MDR-TB), yang lebih sulit dan mahal untuk
-                    ditangani
+                    ditangani.
                 </p>
             </div>
         </div>
@@ -134,20 +78,10 @@
                 <h2 class="text-3xl font-bold mb-4 text-gray-800">Penyebab TBC</h2>
                 <ul class="list-disc pl-5 space-y-2 text-gray-700">
                     <li><strong>Infeksi Primer:</strong> Terjadi saat bakteri pertama kali masuk ke tubuh melalui
-                        tetesan udara.
-                        Pada tahap ini, tubuh biasanya masih bisa menahan bakteri dengan sistem kekebalan tubuh.
-                        Gejala sering tidak muncul atau ringan seperti demam ringan, batuk singkat.</li>
-                    <li><strong>Infeksi Laten:</strong>Bakteri berada dalam tubuh tetapi dalam kondisi "tidur"
-                        (tidak aktif).
-                        Tidak menimbulkan gejala dan tidak menular.
-                        Berpotensi aktif kembali jika sistem kekebalan tubuh melemah.
-                        Sekitar 5-10% orang dengan TB laten berisiko mengalami infeksi aktif pada suatu waktu dalam
-                        hidupnya.</li>
-                    <li><strong>Infeksi Aktif:</strong>Bakteri menjadi aktif, berkembang biak, dan menyebabkan
-                        kerusakan jaringan.
-                        Menyebabkan gejala klinis.
-                        Sangat menular melalui udara.
-                        Butuh pengobatan segera.</li>
+                        tetesan udara. Pada tahap ini, tubuh biasanya masih bisa menahan bakteri dengan sistem kekebalan tubuh. Gejala sering tidak muncul atau ringan seperti demam ringan, batuk singkat.</li>
+                    <li><strong>Infeksi Laten:</strong> Bakteri berada dalam tubuh tetapi dalam kondisi "tidur"
+                        (tidak aktif). Tidak menimbulkan gejala dan tidak menular. Berpotensi aktif kembali jika sistem kekebalan tubuh melemah. Sekitar 5-10% orang dengan TB laten berisiko mengalami infeksi aktif pada suatu waktu dalam hidupnya.</li>
+                    <li><strong>Infeksi Aktif:</strong> Bakteri menjadi aktif, berkembang biak, dan menyebabkan kerusakan jaringan. Menyebabkan gejala klinis. Sangat menular melalui udara. Butuh pengobatan segera.</li>
                 </ul>
             </div>
             <img src="{{ asset('images/bakteri-tbc.jpg') }}" alt="Ilustrasi Bakteri" class="rounded-xl shadow-lg">
@@ -160,19 +94,8 @@
                 <h2 class="text-3xl font-bold mb-4 text-gray-800">Gejala TBC</h2>
                 <ul class="list-disc pl-5 space-y-2 text-gray-700">
                     <strong>Gejala TBC bisa berbeda tergantung organ yang terinfeksi:</strong>
-                    <li>Gejala TBC Paru (TBC paling umum):
-                        Batuk terus-menerus lebih dari 2 minggu (bisa berdahak atau darah).
-                        Nyeri dada saat bernapas atau batuk.
-                        Sesak napas.
-                        Demam berkepanjangan, biasanya pada malam hari.
-                        Keringat malam yang berlebihan.
-                        Lemas, hilang nafsu makan, dan berat badan turun drastis.
-                    </li>
-                    <li>Gejala TBC Ekstra-Paru (Organ Lain):
-                        TBC Tulang: Nyeri tulang, pembengkakan.
-                        TBC Otak (Meningitis TB): Sakit kepala berat, kejang, kebingungan.
-                        TBC Ginjal: Darah dalam urin, nyeri pinggang.
-                        TBC Kelenjar: Pembengkakan kelenjar getah bening (biasanya di leher).</li>
+                    <li>Gejala TBC Paru (TBC paling umum): Batuk terus-menerus lebih dari 2 minggu (bisa berdahak atau darah). Nyeri dada saat bernapas atau batuk. Sesak napas. Demam berkepanjangan, biasanya pada malam hari. Keringat malam yang berlebihan. Lemas, hilang nafsu makan, dan berat badan turun drastis.</li>
+                    <li>Gejala TBC Ekstra-Paru (Organ Lain): TBC Tulang: Nyeri tulang, pembengkakan. TBC Otak (Meningitis TB): Sakit kepala berat, kejang, kebingungan. TBC Ginjal: Darah dalam urin, nyeri pinggang. TBC Kelenjar: Pembengkakan kelenjar getah bening (biasanya di leher).</li>
                 </ul>
             </div>
         </div>
@@ -230,7 +153,7 @@
                     <li>Tidak sepenuhnya melindungi dari TBC paru pada orang dewasa, tetapi tetap dianjurkan.</li>
                     <strong>b. Pencegahan Penularan</strong>
                     <li>Menggunakan masker bagi penderita TBC aktif.</li>
-                    <li>Menjaga ventilasi ruangan agar sirkulasi udara baikk</li>
+                    <li>Menjaga ventilasi ruangan agar sirkulasi udara baik.</li>
                     <li>Menutup mulut saat batuk atau bersin dengan tisu atau siku bagian dalam.</li>
                     <li>Menjalani pengobatan hingga tuntas untuk mencegah penyebaran dan resistensi obat.</li>
                 </ul>
@@ -239,99 +162,41 @@
 
     </section>
 
-
     <!-- Footer -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fa4d7d4 (tambah dashboard)
-  <footer class="text-white">
-  <!-- Bagian atas footer dengan warna biru langit -->
-  <div class="py-8 px-4" style="background-color: #0065A4;">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-       <p class="text-justify text-[12px] text-white">
-  <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
-</p>
-      </div>
-      <div class="pl-20">
-        <h3 class="text-white text-[14px] font-bold mb-2">Kontak Kami</h3>
-        <p class="text-sm">
-          Jl. Jend. Sudirman No.124,<br>
-          Nyangkringan, Bantul, Kec. Bantul,<br>
-          Kabupaten Bantul,<br>
-          Daerah Istimewa Yogyakarta<br>
-          55711
-        </p>
-      </div>
-      <div>
-  <h3 class="font-bold mb-4 ml-60">Temukan Kami</h3> <!-- Menambahkan margin kiri pada tulisan -->
-<div class="flex space-x-4 ml-56"> <!-- Menambahkan margin kiri pada div yang berisi icon -->
-    <a href="#"><img src="images/logo_facebook.png" alt="Facebook" class="w-6 h-6 object-contain"></a>
-    <a href="#"><img src="images/logo_instagram.png" alt="Instagram" class="w-6 h-6 object-contain"></a>
-    <a href="#"><img src="images/logo_whatsapp.png" alt="WhatsApp" class="w-6 h-6 object-contain"></a>
-    <a href="#"><img src="images/logo_youtube.png" alt="YouTube" class="w-6 h-6 object-contain"></a>
-</div>
-
-</div>
-
-    </div>
-  </div>
-
-  <!-- Bagian bawah footer dengan warna biru tua -->
-  <div class="py-4 text-center text-sm" style="background-color: #004b6b;">
-    <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
-  </div>
-</footer>
-
-<<<<<<< HEAD
-=======
-    <footer class="bg-gray-800 text-white py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Kontak Kami</h3>
-                <p class="text-sm">Jl. Contoh No.123, Bantul, Yogyakarta</p>
-                <p class="text-sm">Email: info@pkubantul.or.id</p>
-                <p class="text-sm">Telp: +62 274 123 456</p>
-            </div>
-            <div class="flex md:justify-end items-start">
+    <footer class="text-white">
+        <div class="py-8 px-4" style="background-color: #0065A4;">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Ikuti Kami</h3>
+                    <p class="text-justify text-[12px] text-white">
+                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis...
+                    </p>
+                </div>
+                <div class="pl-20">
+                    <h3 class="text-white text-[14px] font-bold mb-2">Kontak Kami</h3>
+                    <p class="text-sm">
+                        Jl. Jend. Sudirman No.124,<br>
+                        Nyangkringan, Bantul, Kec. Bantul,<br>
+                        Kabupaten Bantul,<br>
+                        Daerah Istimewa Yogyakarta<br>
+                        55711
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Temukan Kami</h3>
                     <div class="flex space-x-4">
-                        <!-- Icons same as before -->
-                        <a href="#" class="hover:text-gray-300" aria-label="Facebook">
-                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                                <path
-                                    d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-2.9h2v-2.2c0-2 1.2-3.2 3-3.2.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2v1.9h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="hover:text-gray-300" aria-label="Instagram">
-                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                                <path
-                                    d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="hover:text-gray-300" aria-label="Twitter">
-                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                                <path
-                                    d="M22.5 5.9c-.8.4-1.7.6-2.6.8a4.4 4.4 0 0 0 1.9-2.5 9 9 0 0 1-2.8 1.1 4.5 4.5 0 0 0-7.7 4.1 12.9 12.9 0 0 1-9.3-4.7 4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.5v.1c0 2.2 1.6 4.1 3.7 4.5a4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 2 19.5a12.9 12.9 0 0 0 7 2c8.3 0 12.9-6.9 12.9-12.9v-.6c.9-.6 1.6-1.4 2.1-2.3z" />
-                            </svg>
-                        </a>
-                        <!-- ... -->
+                        <a href="#"><img src="images/logo_facebook.png" alt="Facebook" class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_instagram.png" alt="Instagram" class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_whatsapp.png" alt="WhatsApp" class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_youtube.png" alt="YouTube" class="w-6 h-6 object-contain"></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
-            &copy; 2025 PKU Bantul. All rights reserved.
+        <div class="py-4 text-center text-sm" style="background-color: #004b6b;">
+            <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
         </div>
     </footer>
->>>>>>> f830dc3 (Initial commit)
-=======
->>>>>>> fa4d7d4 (tambah dashboard)
 
 </body>
-{{-- <script src="{{ asset('js/tab-navigation.js') }}"></script> --}}
-<script src="js/navScroll.js"></script>
 
 </html>
