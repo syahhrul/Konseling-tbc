@@ -4,7 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\CheckHarianController;
 
 
 // Register multi-step
@@ -36,6 +36,8 @@ Route::get('/tentang', fn() => view('tentang'));
 Route::get('/kegiatan', fn() => view('kegiatan'));
 // Route::get('/dashboard', fn() => view('dashboard'));
 
+Route::get('/dashboard', fn() => view('dashboard'));
+
 
 
 // Halaman utama
@@ -56,9 +58,14 @@ Route::get('/kegiatan', function () {
     return view('kegiatan');
 });
 
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 
 // Halaman login
 Route::get('/login', function () {
@@ -75,6 +82,7 @@ Route::get('/register_step1', function () {
 Route::get('/register_step2', function () {
     return view('register_step2'); // pastikan file register_step2.blade.php ada
 })->name('register.step2');
+
 
 Route::get('/tentangafterlogin', function () {
     return view('tentangafterlogin');
@@ -115,3 +123,8 @@ Route::middleware('auth')->get('/checkharian', function () {
     return view('checkharian');
 })->name('checkharian');
 
+Route::get('/register', function () {
+    return view('register'); // pastikan Anda sudah memiliki view register.blade.php
+})->name('register');
+
+Route::post('/checkharian', [CheckHarianController::class, 'store'])->name('checkharian.store');
