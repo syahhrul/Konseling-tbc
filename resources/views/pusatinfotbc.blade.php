@@ -9,10 +9,14 @@
 </head>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <body class="font-sans text-gray-800" style="background-color: #87CEFA;">
 =======
 <body class="font-sans bg-white text-gray-800">
 >>>>>>> f830dc3 (Initial commit)
+=======
+<body class="font-sans text-gray-800" style="background-color: #87CEFA;">
+>>>>>>> fa4d7d4 (tambah dashboard)
 
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
@@ -23,10 +27,14 @@
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
 =======
             <ul class="hidden md:flex space-x-8 text-gray-700">
 >>>>>>> f830dc3 (Initial commit)
+=======
+            <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
+>>>>>>> fa4d7d4 (tambah dashboard)
                 <li><a href="{{ url(path: '/') }}" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
@@ -37,6 +45,9 @@
 
     <!-- Hero Section -->
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
      <section class="relative bg-cover bg-center text-white text-center py-20 px-16" style="background-image: url('/images/laber_pusattbc.png');">
     <div class="absolute inset-0 bg-[#0f172a]/35"></div> <!-- Overlay -->
     <div class="relative z-10 flex flex-col justify-center items-center h-full">
@@ -48,6 +59,7 @@
     </div>
 </section>
 
+<<<<<<< HEAD
 =======
     <section class="relative bg-[url('/images/paru-paru.jpg')] bg-cover bg-center text-white text-center py-20 px-4">
         <div class="absolute inset-0 bg-[#0f172a]/70"></div> <!-- Overlay -->
@@ -60,6 +72,8 @@
         </div>
     </section>
 >>>>>>> f830dc3 (Initial commit)
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
 
 
     <!-- TBC Information Tab Navigation -->
@@ -68,10 +82,14 @@
         <!-- Navbar mini sticky -->
         <nav class="flex space-x-4 overflow-x-auto pb-4 border-b border-gray-300 sticky top-0 bg-white z-20">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="deskripsi">Deskripsi</button>
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="penyebab">Penyebab</button>
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="gejala">Gejala</button>
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap"
+<<<<<<< HEAD
                 data-target="pengobatan">Pengobatan</button>
             <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap"
 =======
@@ -82,6 +100,10 @@
                 data-target="pengobatan">Pengobatan</button>
             <button class="tab-btn px-4 py-2 text-gray-700 whitespace-nowrap"
 >>>>>>> f830dc3 (Initial commit)
+=======
+                data-target="pengobatan">Pengobatan</button>
+            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap"
+>>>>>>> fa4d7d4 (tambah dashboard)
                 data-target="pencegahan">Pencegahan</button>
         </nav>
 
@@ -220,6 +242,9 @@
 
     <!-- Footer -->
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
   <footer class="text-white">
   <!-- Bagian atas footer dengan warna biru langit -->
   <div class="py-8 px-4" style="background-color: #0065A4;">
@@ -259,6 +284,7 @@
   </div>
 </footer>
 
+<<<<<<< HEAD
 =======
     <footer class="bg-gray-800 text-white py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -301,6 +327,8 @@
         </div>
     </footer>
 >>>>>>> f830dc3 (Initial commit)
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
 
 </body>
 {{-- <script src="{{ asset('js/tab-navigation.js') }}"></script> --}}

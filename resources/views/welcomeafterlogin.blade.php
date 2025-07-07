@@ -22,6 +22,7 @@
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
@@ -32,6 +33,12 @@
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
 >>>>>>> f830dc3 (Initial commit)
+=======
+                <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
+                <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
+                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
+                <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+>>>>>>> fa4d7d4 (tambah dashboard)
                 <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
             
@@ -39,10 +46,14 @@
             <div class="flex items-center space-x-4">
                 @if (Auth::check())
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
 =======
                     <span class="text-gray-900">Halo, {{ Auth::user()->name }}</span>
 >>>>>>> f830dc3 (Initial commit)
+=======
+                    <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
+>>>>>>> fa4d7d4 (tambah dashboard)
                 
                     <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-8 h-8 rounded-full">
                 @else
@@ -65,6 +76,7 @@
         <ul class="space-y-4 text-gray-700 font-medium">
             <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
             <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
 <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
@@ -74,6 +86,12 @@
             <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
             <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
 >>>>>>> f830dc3 (Initial commit)
+=======
+            <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
+            <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
+<li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+
+>>>>>>> fa4d7d4 (tambah dashboard)
         </ul>
     </div>
 
@@ -142,12 +160,17 @@
                     secara efektif dan berkelanjutan.
                 </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <a href="/tentang" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
 
 =======
                 <a href="#"
                     class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
 >>>>>>> f830dc3 (Initial commit)
+=======
+                <a href="/tentang" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
+
+>>>>>>> fa4d7d4 (tambah dashboard)
             </div>
             <div class="md:w-5/12 text-center">
                 <img src="{{ asset('images/dinkes.jpg') }}" alt="Dinas Kesehatan"

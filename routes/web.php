@@ -7,9 +7,13 @@ use App\Http\Controllers\LoginController;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> f830dc3 (Initial commit)
+=======
+
+>>>>>>> fa4d7d4 (tambah dashboard)
 // Register multi-step
 Route::get('/register/step1', [RegisterController::class, 'step1'])->name('register.step1');
 Route::post('/register/step1', [RegisterController::class, 'postStep1'])->name('register.step1.post');
@@ -38,10 +42,14 @@ Route::get('/', fn() => view('welcome'));
 Route::get('/tentang', fn() => view('tentang'));
 Route::get('/kegiatan', fn() => view('kegiatan'));
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Route::get('/dashboard', fn() => view('dashboard'));
 =======
 Route::get('/dashboard', fn() => view('dashboard'));
 >>>>>>> f830dc3 (Initial commit)
+=======
+// Route::get('/dashboard', fn() => view('dashboard'));
+>>>>>>> fa4d7d4 (tambah dashboard)
 
 
 
@@ -64,6 +72,7 @@ Route::get('/kegiatan', function () {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // });
@@ -72,6 +81,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 >>>>>>> f830dc3 (Initial commit)
+=======
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
+>>>>>>> fa4d7d4 (tambah dashboard)
 
 // Halaman login
 Route::get('/login', function () {
@@ -89,6 +103,9 @@ Route::get('/register_step2', function () {
     return view('register_step2'); // pastikan file register_step2.blade.php ada
 })->name('register.step2');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
 
 Route::get('/tentangafterlogin', function () {
     return view('tentangafterlogin');
@@ -124,6 +141,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/tentangafterlogin', function () {
     return view('tentangafterlogin');
 })->name('tentangafterlogin');
+<<<<<<< HEAD
 
 Route::middleware('auth')->get('/checkharian', function () {
     return view('checkharian');
@@ -131,3 +149,5 @@ Route::middleware('auth')->get('/checkharian', function () {
 
 =======
 >>>>>>> f830dc3 (Initial commit)
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)

@@ -30,6 +30,7 @@
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <li><a href="{{url('/')}}" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
@@ -52,6 +53,9 @@
                 </li>
 =======
                 <li><a href="#" class="hover:text-red-600">Beranda</a></li>
+=======
+                <li><a href="{{url('/')}}" class="hover:text-red-600">Beranda</a></li>
+>>>>>>> fa4d7d4 (tambah dashboard)
                 <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
@@ -192,8 +196,7 @@
                     organisasi lokal dalam meningkatkan peran serta masyarakat dalam upaya penanggulangan tuberkulosis
                     secara efektif dan berkelanjutan.
                 </p>
-                <a href="#"
-                    class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
+                <a href="{{ url('/tentang') }}"  class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">Selengkapnya</a>
             </div>
             <div class="md:w-5/12 text-center">
                 <img src="{{ asset('images/dinkes.jpg') }}" alt="Dinas Kesehatan"

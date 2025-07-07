@@ -65,6 +65,9 @@
       <!-- FORM LOGIN -->
       <div class="login-container">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
       
         <!-- Alert Success -->
         @if (session('success'))
@@ -72,6 +75,7 @@
           {{ session('success') }}
         </div>
         @endif
+<<<<<<< HEAD
 
         <!-- Alert Error -->
         @if ($errors->any())
@@ -107,38 +111,48 @@
           <button type="submit">Sign in</button>
         </form>
 =======
+=======
+>>>>>>> fa4d7d4 (tambah dashboard)
 
-
-@if (session('success'))
-    <div class="alert alert-success" style="background-color: #4CAF50; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
-        {{ session('success') }}
-    </div>
-@endif
-
+        <!-- Alert Error -->
+        @if ($errors->any())
+        <div class="alert alert-danger" style="background-color: #f44336; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
 
         <h2>Login</h2>
         <form action="{{ route('login.submit') }}" method="POST">
-    @csrf
+          @csrf
 
-    <label for="userId">User ID</label>
-    <input type="text" id="userId" name="userId" placeholder="masukkan User ID" required>
+          <label for="userId">User ID</label>
+          <input type="text" id="userId" name="userId" placeholder="masukkan User ID" required>
 
-    <label for="referral">Kode Referal</label>
-    <input type="text" id="referral" name="referral" placeholder="masukkan kode referal">
+          <label for="referral">Kode Referal</label>
+          <input type="text" id="referral" name="referral" placeholder="masukkan kode referal">
 
-    <label for="role">Sebagai</label>
-    <select id="role" name="role" required>
-        <option selected disabled>Pilih login sebagai peran anda</option>
-        <option value="dokter">Perawat</option>
-        <option value="pasien">Pasien</option>
-    </select>
+          <label for="role">Sebagai</label>
+          <select id="role" name="role" required>
+            <option selected disabled>Pilih login sebagai peran anda</option>
+            <option value="perawat">Perawat</option>
+            <option value="pasien">Pasien</option>
+          </select>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="masukkan password" required>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="masukkan password" required>
 
+<<<<<<< HEAD
     <button type="submit">Sign in</button>
 </form>
 >>>>>>> f830dc3 (Initial commit)
+=======
+          <button type="submit">Sign in</button>
+        </form>
+>>>>>>> fa4d7d4 (tambah dashboard)
 
         <div class="login-footer">
           Don't have an account yet? <a href="{{ route('register.step1') }}">Register now</a>
