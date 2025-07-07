@@ -1,46 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Http\Request;
-use App\Models\CheckHarian;
-use Illuminate\Support\Facades\Auth;
-
-class CheckHarianController extends Controller
+return new class extends Migration
 {
-    // Menampilkan halaman check harian
-    public function index()
+    /**
+     * Run the migrations.
+     */
+    public function up()
     {
-        return view('checkharian');  // Halaman untuk input data check harian
+        Schema::create('check_harian', function (Blueprint $table) {
+            $table->id(); // Primary key
+            $table->unsignedBigInteger('user_id'); // Untuk menghubungkan ke tabel user
+            $table->boolean('frekuensi_batuk')->nullable(); // Parah / Tidak
+            $table->boolean('panas')->nullable(); // Ya / Tidak
+            $table->boolean('keringat_dingin')->nullable(); // Ya / Tidak
+            $table->boolean('lupa_minum_obat')->nullable(); // Ya / Tidak
+            $table->text('alasan_lupa')->nullable(); // Alasan lupa minum obat
+            $table->boolean('mual_saat_minum_obat')->nullable(); // Ya / Tidak
+            $table->boolean('berat_badan_turun')->nullable(); // Turun / Tidak
+            $table->timestamps(); // Untuk created_at dan updated_at
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Menyambungkan ke tabel users
+        });
     }
 
-    // Menyimpan data check harian ke database
-    public function store(Request $request)
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        // Validasi input
-        $request->validate([
-            'frekuensi_batuk' => 'required|boolean',
-            'panas' => 'required|boolean',
-            'keringat_dingin' => 'required|boolean',
-            'lupa_minum_obat' => 'required|boolean',
-            'alasan_lupa' => 'nullable|string',
-            'mual_saat_minum_obat' => 'required|boolean',
-            'berat_badan_turun' => 'required|boolean',
-        ]);
-
-        // Menyimpan data ke tabel check_harian
-        CheckHarian::create([
-            'user_id' => Auth::id(),  // Menggunakan ID pengguna yang sedang login
-            'frekuensi_batuk' => $request->frekuensi_batuk,
-            'panas' => $request->panas,
-            'keringat_dingin' => $request->keringat_dingin,
-            'lupa_minum_obat' => $request->lupa_minum_obat,
-            'alasan_lupa' => $request->alasan_lupa,
-            'mual_saat_minum_obat' => $request->mual_saat_minum_obat,
-            'berat_badan_turun' => $request->berat_badan_turun,
-        ]);
-
-        // Menambahkan pesan sukses ke session
-        return redirect()->back()->with('success', 'Data Check Harian Berhasil Disimpan!');
+        Schema::dropIfExists('check_harian');
     }
-}
+};
