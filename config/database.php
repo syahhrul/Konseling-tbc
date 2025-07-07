@@ -43,6 +43,7 @@ return [
         ],
 
         'mysql' => [
+<<<<<<< HEAD
             'driver' => 'mysql',
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -61,6 +62,22 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+=======
+    'driver' => 'mysql',
+    'host' => env('DB_HOST', '127.0.0.1'),
+    'port' => env('DB_PORT', '3306'),
+    'database' => env('DB_DATABASE', 'pku_register'),
+    'username' => env('DB_USERNAME', 'root'),
+    'password' => env('DB_PASSWORD', 'naufalganteng88'),
+    'unix_socket' => env('DB_SOCKET', ''),
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+    'prefix' => '',
+    'strict' => true,
+    'engine' => null,
+],
+
+>>>>>>> f830dc3 (Initial commit)
 
         'mariadb' => [
             'driver' => 'mariadb',

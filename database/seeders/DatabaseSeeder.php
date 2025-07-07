@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+<<<<<<< HEAD
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,24 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password123'), // Ganti password sesuai kebutuhan
             'created_at' => now(),
             'updated_at' => now(),
+=======
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        // User::factory(10)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+>>>>>>> f830dc3 (Initial commit)
         ]);
     }
 }

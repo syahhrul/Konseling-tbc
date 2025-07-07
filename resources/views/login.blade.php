@@ -64,6 +64,7 @@
     <div class="card-wrapper">
       <!-- FORM LOGIN -->
       <div class="login-container">
+<<<<<<< HEAD
       
         <!-- Alert Success -->
         @if (session('success'))
@@ -105,6 +106,39 @@
 
           <button type="submit">Sign in</button>
         </form>
+=======
+
+
+@if (session('success'))
+    <div class="alert alert-success" style="background-color: #4CAF50; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+        {{ session('success') }}
+    </div>
+@endif
+
+
+        <h2>Login</h2>
+        <form action="{{ route('login.submit') }}" method="POST">
+    @csrf
+
+    <label for="userId">User ID</label>
+    <input type="text" id="userId" name="userId" placeholder="masukkan User ID" required>
+
+    <label for="referral">Kode Referal</label>
+    <input type="text" id="referral" name="referral" placeholder="masukkan kode referal">
+
+    <label for="role">Sebagai</label>
+    <select id="role" name="role" required>
+        <option selected disabled>Pilih login sebagai peran anda</option>
+        <option value="dokter">Perawat</option>
+        <option value="pasien">Pasien</option>
+    </select>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="masukkan password" required>
+
+    <button type="submit">Sign in</button>
+</form>
+>>>>>>> f830dc3 (Initial commit)
 
         <div class="login-footer">
           Don't have an account yet? <a href="{{ route('register.step1') }}">Register now</a>

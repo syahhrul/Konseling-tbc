@@ -21,17 +21,28 @@
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
+<<<<<<< HEAD
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+=======
+                <li><a href="#" class="hover:text-red-600">Beranda</a></li>
+                <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
+                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
+                <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
+>>>>>>> f830dc3 (Initial commit)
                 <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
             
             <!-- Header Right (User Info) -->
             <div class="flex items-center space-x-4">
                 @if (Auth::check())
+<<<<<<< HEAD
                     <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
+=======
+                    <span class="text-gray-900">Halo, {{ Auth::user()->name }}</span>
+>>>>>>> f830dc3 (Initial commit)
                 
                     <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-8 h-8 rounded-full">
                 @else
@@ -53,10 +64,16 @@
         <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
         <ul class="space-y-4 text-gray-700 font-medium">
             <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
+<<<<<<< HEAD
             <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
             <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
 <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
 
+=======
+            <li><a href="{{ url('/tentang') }}" class="hover:text-red-600 transition">Tentang</a></li>
+            <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
+            <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
+>>>>>>> f830dc3 (Initial commit)
         </ul>
     </div>
 
@@ -124,8 +141,13 @@
                     organisasi lokal dalam meningkatkan peran serta masyarakat dalam upaya penanggulangan tuberkulosis
                     secara efektif dan berkelanjutan.
                 </p>
+<<<<<<< HEAD
                 <a href="/tentang" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
 
+=======
+                <a href="#"
+                    class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
+>>>>>>> f830dc3 (Initial commit)
             </div>
             <div class="md:w-5/12 text-center">
                 <img src="{{ asset('images/dinkes.jpg') }}" alt="Dinas Kesehatan"
