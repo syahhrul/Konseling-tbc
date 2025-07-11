@@ -55,4 +55,34 @@ class LoginController extends Controller
         // Redirect ke halaman login setelah logout
         return redirect()->route('login')->with('success', 'Berhasil logout.');
     }
+
+    public function login(Request $request)
+    {
+        // Validasi input login
+        $request->validate([
+            'userId' => 'required',
+            'password' => 'required',
+            'role' => 'required', // Pastikan role terisi
+        ]);
+
+        // Cek kredensial login
+        if (Auth::attempt(['user_id' => $request->userId, 'password' => $request->password])) {
+            $role = Auth::user()->role;
+            
+            // Menyimpan role pada session untuk digunakan di dashboard
+            session(['role' => $role]);
+
+            // Arahkan pengguna berdasarkan role
+            if ($role == 'perawat') {
+                return redirect()->route('dashboard_perawat');  // Menuju ke dashboard perawat
+            } elseif ($role == 'pasien') {
+                return redirect()->route('dashboard');  // Menuju ke dashboard pasien
+            } else {
+                return redirect()->route('login')->withErrors('Peran tidak valid.');
+            }
+        } else {
+            // Login gagal
+            return back()->withErrors('Gagal login. Cek kembali User ID atau Password.');
+        }
+    }
 }

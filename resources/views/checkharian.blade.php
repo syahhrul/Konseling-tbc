@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Check Harian</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="font-sans bg-gray-50">
-
     <!-- Popup Success Message -->
     @if(session('success'))
     <script>
@@ -18,6 +15,7 @@
         }
     </script>
     @endif
+
 
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
@@ -34,7 +32,7 @@
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
                 <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
-
+            
             <div class="flex items-center space-x-4">
                 @if (Auth::check())
                     <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
@@ -72,7 +70,7 @@
                     <img src="{{ asset('images/icon-setting.png') }}" alt="Settings Icon" class="w-6 h-6" />
                     <span>Pengaturan</span>
                 </a>
-                <a href="#" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+                <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                     <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
                     <span>Bantuan</span>
                 </a>
@@ -93,19 +91,19 @@
                         <div>
                             <label class="block text-gray-700 font-medium">Frekuensi Batuk*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="batuk_parah" name="frekuensi_batuk" value="1" class="mr-2" required>
-                                <label for="batuk_parah" class="text-gray-700">Parah</label>
-                                <input type="radio" id="batuk_tidak" name="frekuensi_batuk" value="0" class="ml-4 mr-2" required>
-                                <label for="batuk_tidak" class="text-gray-700">Tidak</label>
+                                <input type="radio" id="batuk_parah" name="frekuensi_batuk" value="batuk" class="mr-2" required>
+                                <label for="batuk_parah" class="text-gray-700">Batuk</label>
+                                <input type="radio" id="batuk_tidak" name="frekuensi_batuk" value="tidak batuk" class="ml-4 mr-2" required>
+                                <label for="batuk_tidak" class="text-gray-700">Tidak Batuk</label>
                             </div>
                         </div>
                         <!-- Panas -->
                         <div>
                             <label class="block text-gray-700 font-medium">Panas*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="panas_ya" name="panas" value="1" class="mr-2" required>
+                                <input type="radio" id="panas_ya" name="panas" value="panas" class="mr-2" required>
                                 <label for="panas_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="panas_tidak" name="panas" value="0" class="ml-4 mr-2" required>
+                                <input type="radio" id="panas_tidak" name="panas" value="tidak panas" class="ml-4 mr-2" required>
                                 <label for="panas_tidak" class="text-gray-700">Tidak</label>
                             </div>
                         </div>
@@ -113,9 +111,9 @@
                         <div>
                             <label class="block text-gray-700 font-medium">Keringat Dingin Pada Malam Hari*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="keringat_ya" name="keringat_dingin" value="1" class="mr-2" required>
+                                <input type="radio" id="keringat_ya" name="keringat_dingin" value="keringat dingin" class="mr-2" required>
                                 <label for="keringat_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="keringat_tidak" name="keringat_dingin" value="0" class="ml-4 mr-2" required>
+                                <input type="radio" id="keringat_tidak" name="keringat_dingin" value="tidak keringat dingin" class="ml-4 mr-2" required>
                                 <label for="keringat_tidak" class="text-gray-700">Tidak</label>
                             </div>
                         </div>
@@ -123,9 +121,9 @@
                         <div>
                             <label class="block text-gray-700 font-medium">Lupa Minum Obat*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="lupa_ya" name="lupa_minum_obat" value="1" class="mr-2" required>
+                                <input type="radio" id="lupa_ya" name="lupa_minum_obat" value="lupa minum obat" class="mr-2" required>
                                 <label for="lupa_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="lupa_tidak" name="lupa_minum_obat" value="0" class="ml-4 mr-2" required>
+                                <input type="radio" id="lupa_tidak" name="lupa_minum_obat" value="tidak lupa minum obat" class="ml-4 mr-2" required>
                                 <label for="lupa_tidak" class="text-gray-700">Tidak</label>
                             </div>
                             <textarea name="alasan_lupa" placeholder="Isi alasan jika anda lupa minum obat" class="mt-2 w-full p-2 border rounded-md text-gray-700"></textarea>
@@ -134,9 +132,9 @@
                         <div>
                             <label class="block text-gray-700 font-medium">Mual Saat Minum Obat*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="mual_ya" name="mual_saat_minum_obat" value="1" class="mr-2" required>
+                                <input type="radio" id="mual_ya" name="mual_saat_minum_obat" value="mual" class="mr-2" required>
                                 <label for="mual_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="mual_tidak" name="mual_saat_minum_obat" value="0" class="ml-4 mr-2" required>
+                                <input type="radio" id="mual_tidak" name="mual_saat_minum_obat" value="tidak mual" class="ml-4 mr-2" required>
                                 <label for="mual_tidak" class="text-gray-700">Tidak</label>
                             </div>
                         </div>
@@ -144,9 +142,9 @@
                         <div>
                             <label class="block text-gray-700 font-medium">Kondisi Berat Badan*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="berat_turun" name="kondisi_berat_badan" value="1" class="mr-2" required>
+                                <input type="radio" id="berat_turun" name="berat_badan_turun" value="berat turun" class="mr-2" required>
                                 <label for="berat_turun" class="text-gray-700">Turun</label>
-                                <input type="radio" id="berat_tidak" name="kondisi_berat_badan" value="0" class="ml-4 mr-2" required>
+                                <input type="radio" id="berat_tidak" name="berat_badan_turun" value="berat tidak turun" class="ml-4 mr-2" required>
                                 <label for="berat_tidak" class="text-gray-700">Tidak</label>
                             </div>
                         </div>
@@ -219,7 +217,5 @@
             <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
         </div>
     </footer>
-
 </body>
-
 </html>

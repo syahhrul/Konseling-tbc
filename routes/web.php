@@ -128,3 +128,18 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('/checkharian', [CheckHarianController::class, 'store'])->name('checkharian.store');
+
+Route::get('/bantuan', function () {
+    return view('bantuan'); // pastikan Anda sudah memiliki view bantuan.blade.php
+})->name('bantuan');
+
+// Route untuk dashboard perawat
+Route::get('/dashboard_perawat', function () {
+    return view('dashboard_perawat');  // Mengarah ke halaman dashboard_perawat.blade.php
+})->name('dashboard_perawat');
+
+Route::get('/datapasien', function () {
+    return view('datapasien');  // Mengarah ke halaman dashboardperawat.blade.php
+})->name('datapasien');
+
+

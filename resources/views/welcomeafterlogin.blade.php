@@ -18,13 +18,23 @@
                 <img src="{{ asset('images/logopku.png') }}" alt="Logo PKU" class="h-10" />
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
-            <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-                <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
-                <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
-                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
-                <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
-                <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
-            </ul>
+<ul class="hidden md:flex space-x-8" style="color: #0065A4;">
+    <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
+    <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
+    <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
+
+    <!-- Menampilkan link Dashboard berdasarkan Role -->
+    @if (Auth::check())
+        @if (Auth::user()->role == 'perawat')
+            <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-yellow-400 {{ Route::is('dashboard_perawat') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+        @elseif (Auth::user()->role == 'pasien')
+            <li><a href="{{ url('/dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+        @endif
+    @endif
+
+    <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
+</ul>
+
             
             <!-- Header Right (User Info) -->
             <div class="flex items-center space-x-4">
