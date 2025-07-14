@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CheckHarianController;
+use App\Http\Controllers\NewPasswordController;
 
 
 // Register multi-step
@@ -54,9 +55,7 @@ Route::get('/tentang', function () {
     return view('tentang');
 });
 
-Route::get('/kegiatan', function () {
-    return view('kegiatan');
-});
+
 
 
 // Route::get('/dashboard', function () {
@@ -115,9 +114,17 @@ Route::middleware('auth')->get('/settings', function () {
 // Logout route
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/tentang', function () {
+    return view('tentang');
+})->name('tentang');
+
 Route::get('/tentangafterlogin', function () {
     return view('tentangafterlogin');
 })->name('tentangafterlogin');
+
+Route::get('/kegiatanafterlogin', function () {
+    return view('kegiatanafterlogin');
+})->name('kegiatanafterlogin');
 
 Route::middleware('auth')->get('/checkharian', function () {
     return view('checkharian');
@@ -142,4 +149,10 @@ Route::get('/datapasien', function () {
     return view('datapasien');  // Mengarah ke halaman dashboardperawat.blade.php
 })->name('datapasien');
 
+Route::get('/lupapassword', function () {
+    return view('lupapassword');  // Mengarah ke halaman dashboardperawat.blade.php
+})->name('lupapassword');
 
+Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+Route::post('/reset-password', [NewPasswordController::class, 'update'])->name('password.update');

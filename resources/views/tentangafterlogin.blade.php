@@ -20,8 +20,8 @@
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
-                <li><a href="{{ url('/tentangaffterlogin') }}" class="hover:text-red-600">Tentang</a></li>
-                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
+                <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
+                <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
                 <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
@@ -29,7 +29,7 @@
             <!-- Header Right (User Info) -->
             <div class="flex items-center space-x-4">
                 @if (Auth::check())
-                    <span class="text-gray-900">Halo, {{ Auth::user()->name }}Selamat Datang!</span>
+                    <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
                 
                     <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-8 h-8 rounded-full">
                 @else
@@ -52,7 +52,7 @@
         <ul class="space-y-4 text-gray-700 font-medium">
             <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
             <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
-            <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
+            <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
             <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
         </ul>
     </div>

@@ -21,7 +21,7 @@
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
-                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
+                <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600">Kegiatan</a></li>
                 <!-- Link untuk dashboard berdasarkan role -->
                 @if (Auth::check())
                     @if (Auth::user()->role == 'perawat')
