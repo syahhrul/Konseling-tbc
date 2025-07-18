@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PKU Bantul - Penanggulangan TBC</title>
     <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+        /* Gambar hero section dengan animasi slide-in */
+        .hero-image {
+            animation: slideIn 1.2s ease-out forwards; /* Menambahkan animasi */
+        }
+
+        /* Efek Hover - Semua gambar naik saat cursor berada di atasnya */
+        img {
+            transition: transform 0.3s ease-in-out; /* Transisi halus untuk efek pergeseran */
+        }
+
+        img:hover {
+            transform: translateY(-10px); /* Menggeser gambar ke atas saat dihover */
+        }
+    </style>
 </head>
 
 <body class="font-sans text-gray-800,"style="background-color: #87CEFA;">

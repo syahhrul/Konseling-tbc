@@ -94,12 +94,12 @@
           <label for="referral">Kode Referal</label>
           <input type="text" id="referral" name="referral" placeholder="masukkan kode referal">
 
-          <label for="role">Sebagai</label>
+          {{-- <label for="role">Sebagai</label>
           <select id="role" name="role" required>
             <option selected disabled>Pilih login sebagai peran anda</option>
             <option value="perawat">Perawat</option>
             <option value="pasien">Pasien</option>
-          </select>
+          </select> --}}
 
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="masukkan password" required>

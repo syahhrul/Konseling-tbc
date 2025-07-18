@@ -78,15 +78,6 @@
       <img src="{{ asset('images/Logo_dashboard.png') }}" alt="Logo Dashboard" class="w-8 h-8 rounded-full" />
       <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
     </div>
-
-    <!-- Search Bar dan Menu Ikon di kanan -->
-    <div class="flex flex-col items-end space-y-4">
-      <!-- Search Bar dengan logo di kiri -->
-      <div class="flex items-center space-x-2">
-        <img src="{{ asset('images/search.png') }}" alt="Search Logo" class="w-6 h-6" />
-        <input type="text" placeholder="Cari..." class="px-4 py-2 rounded-full w-80 bg-white text-gray-900" />
-      </div>
-
       <!-- Menu Ikon di bawah Search -->
       <div class="flex items-center space-x-6">
         <!-- Profile -->
@@ -100,13 +91,6 @@
           <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
           <span>Check Harian</span>
         </a>
-
-        <!-- Pengaturan -->
-        <a href="#" class="flex items-center space-x-2 text-white hover:text-yellow-400">
-          <img src="{{ asset('images/icon-setting.png') }}" alt="Settings Icon" class="w-6 h-6" />
-          <span>Pengaturan</span>
-        </a>
-
         <!-- Bantuan -->
         <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
           <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />

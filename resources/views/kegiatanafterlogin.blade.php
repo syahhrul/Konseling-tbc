@@ -6,10 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PKU Bantul - Penanggulangan TBC</title>
     <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+        /* Gambar hero section dengan animasi slide-in */
+        .hero-image {
+            animation: slideIn 1.2s ease-out forwards; /* Menambahkan animasi */
+        }
+
+        /* Efek Hover - Semua gambar naik saat cursor berada di atasnya */
+        img {
+            transition: transform 0.3s ease-in-out; /* Transisi halus untuk efek pergeseran */
+        }
+
+        img:hover {
+            transform: translateY(-10px); /* Menggeser gambar ke atas saat dihover */
+        }
+    </style>
 </head>
 
-<body class="font-sans text-gray-800" style="background-color: #87CEFA;">
+<body class="font-sans text-gray-800,"style="background-color: #87CEFA;">
 
+        <!-- Header -->
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
         <div class="container mx-auto flex items-center justify-between px-4 py-3">
@@ -18,19 +34,28 @@
                 <img src="{{ asset('images/logopku.png') }}" alt="Logo PKU" class="h-10" />
                 <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
-            <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-                <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
-                <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
-                <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600">Kegiatan</a></li>
-                <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
-                <li> <a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
-            </ul>
+<ul class="hidden md:flex space-x-8" style="color: #0065A4;">
+    <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
+    <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
+    <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600">Kegiatan</a></li>
+
+    <!-- Menampilkan link Dashboard berdasarkan Role -->
+    @if (Auth::check())
+        @if (Auth::user()->role == 'perawat')
+            <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-yellow-400 {{ Route::is('dashboard_perawat') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+        @elseif (Auth::user()->role == 'pasien')
+            <li><a href="{{ url('/dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+        @endif
+    @endif
+
+    <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
+</ul>
+
             
             <!-- Header Right (User Info) -->
             <div class="flex items-center space-x-4">
                 @if (Auth::check())
                     <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
-                
                     <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-8 h-8 rounded-full">
                 @else
                     <a href="{{ route('login') }}" class="text-gray-900 hover:text-red-600">Login</a>
@@ -49,17 +74,18 @@
         </div>
 
         <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
-        <ul class="space-y-4 text-gray-700 font-medium">
-            <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
-            <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
-            <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
-            <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
-        </ul>
-    </div>
+            <ul class="space-y-4 text-gray-700 font-medium">
+                <li><a href="/welcomeafterlogin" class="hover:text-red-600 transition">Beranda</a></li>
+                <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
+                <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
+                <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Hero Section -->
- <!-- Section: Kegiatan Kami -->
-<section class="bg-gray-100 py-12" style="background-color: #87CEFA;">
+
+    <!-- Section: Kegiatan Kami -->
+<section class="bg-darkgray-100 py-12">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Kartu 1 -->
@@ -154,8 +180,6 @@
         </div>
     </div>
 </section>
-
-
 
 
     <!-- Footer -->

@@ -56,10 +56,6 @@
                     <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
                     <span>Check Harian</span>
                 </a>
-                <a href="#" class="flex items-center space-x-2 text-white hover:text-yellow-400">
-                    <img src="{{ asset('images/icon-setting.png') }}" alt="Settings Icon" class="w-6 h-6" />
-                    <span>Pengaturan</span>
-                </a>
                 <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                     <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
                     <span>Bantuan</span>

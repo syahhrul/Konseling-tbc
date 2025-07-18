@@ -2,10 +2,32 @@
 <html lang="id">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PKU Bantul - Penanggulangan TBC</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PKU Bantul - Penanggulangan TBC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Efek Hover - Gambar naik saat cursor berada di atasnya */
+        #carousel-inner img,
+        .hover-effect img {
+            transition: transform 0.3s ease-in-out; /* Transisi halus */
+        }
+
+        #carousel-inner img:hover,
+        .hover-effect img:hover {
+            transform: translateY(-10px); /* Menggeser gambar ke atas saat dihover */
+        }
+
+        /* Efek Hover pada tombol "Lihat Selengkapnya" */
+        .btn-hover {
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Transisi halus */
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-5px); /* Menggeser tombol ke atas saat dihover */
+            background-color: #e53e3e; /* Mengubah warna latar belakang */
+        }
+    </style>
 </head>
 
 <body class="font-sans text-gray-800" style="background-color: #87CEFA;">
@@ -74,20 +96,13 @@
                 <div id="carousel-inner" class="flex transition-transform duration-700">
                     <img src="{{ asset('images/slide1.png') }}" alt="Slide 1" class="w-[500px] object-contain" />
                     <img src="{{ asset('images/hp1.jpg') }}" alt="Slide 2" class="w-[500px] object-contain" />
-                    <img src="{{ asset('images/pameran-pku.jpg')}}" alt="Slide 3"class="w-[500px] object-contain" />
-                    <img src="{{ asset('images/slide4.png')}}" alt="Slide 4"class="w-[500px] object-contain" />
+                    <img src="{{ asset('images/pameran-pku.jpg') }}" alt="Slide 3" class="w-[500px] object-contain" />
+                    <img src="{{ asset('images/slide4.png') }}" alt="Slide 4" class="w-[500px] object-contain" />
                     <img src="{{ asset('images/slide1.png') }}" alt="Clone Slide 1" class="w-[500px] object-contain" />
                 </div>
             </div>
-
-            <button id="prevBtn"
-                class="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75">
-                ‹
-            </button>
-            <button id="nextBtn"
-                class="absolute top-1/2 right-2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75">
-                ›
-            </button>
+            <button id="prevBtn" class="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75">‹</button>
+            <button id="nextBtn" class="absolute top-1/2 right-2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75">›</button>
         </div>
     </section>
 
@@ -103,10 +118,10 @@
                     TBC memerlukan kerjasama dari berbagai pihak dan edukasi kepada masyarakat luas.
                 </p>
                 <a href={{ url('/pusatinfotbc') }}
-                    class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">Lihat
+                    class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 btn-hover">Lihat
                     Selengkapnya</a>
             </div>
-            <div class="md:w-5/12 text-center">
+            <div class="md:w-5/12 text-center hover-effect">
                 <img src="{{ asset('images/paru-paru.jpg') }}" alt="Paru-paru" class="mx-auto w-72 object-contain" />
             </div>
         </div>
@@ -118,15 +133,12 @@
             <div class="md:w-1/2 text-gray-900">
                 <h4 class="mb-4 text-2xl font-semibold">Tentang Kami</h4>
                 <p class="leading-relaxed text-lg">
-                    Kami bekerja sama dan mengembangkan kemitraan dengan Pemerintah, organisasi internasional dan
-                    organisasi lokal dalam meningkatkan peran serta masyarakat dalam upaya penanggulangan tuberkulosis
-                    secara efektif dan berkelanjutan.
+                    Kami bekerja sama dan mengembangkan kemitraan dengan Pemerintah, organisasi internasional dan organisasi lokal dalam meningkatkan peran serta masyarakat dalam upaya penanggulangan tuberkulosis secara efektif dan berkelanjutan.
                 </p>
-                <a href="/tentang" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">Selengkapnya</a>
+                <a href="{{ url('/tentang') }}" class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 btn-hover">Selengkapnya</a>
             </div>
-            <div class="md:w-5/12 text-center">
-                <img src="{{ asset('images/dinkes.jpg') }}" alt="Dinas Kesehatan"
-                    class="mx-auto w-full max-w-md object-contain" />
+            <div class="md:w-5/12 text-center hover-effect">
+                <img src="{{ asset('images/dinkes.jpg') }}" alt="Dinas Kesehatan" class="mx-auto w-full max-w-md object-contain" />
             </div>
         </div>
     </section>
@@ -137,7 +149,7 @@
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <p class="text-justify text-[12px] text-white">
-                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
+                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis...
                     </p>
                 </div>
                 <div class="pl-20">
@@ -169,28 +181,26 @@
     <script>
         const menuBtn = document.getElementById("menuBtn");
         const mobileMenu = document.getElementById("mobileMenu");
+        const carouselInner = document.getElementById("carousel-inner");
+        let currentSlide = 0;
+
         menuBtn.addEventListener("click", () => {
             mobileMenu.classList.toggle("hidden");
         });
-    </script>
 
-    <!-- Script Carousel -->
-    <script>
-        const carouselInner = document.getElementById('carousel-inner');
-        const totalItems = carouselInner.children.length;
-        let currentIndex = 0;
+        // Fungsi untuk mengubah slide secara otomatis
+        function changeSlide() {
+            const slides = carouselInner.querySelectorAll("img");
+            const totalSlides = slides.length;
 
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
-        });
+            currentSlide = (currentSlide + 1) % totalSlides; // Menentukan slide berikutnya
+            const offset = -currentSlide * 500; // Pindahkan ke slide yang sesuai (500px adalah lebar gambar)
+            carouselInner.style.transform = `translateX(${offset}px)`; // Menggeser gambar
+        }
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalItems;
-            carouselInner.style.transform = `translateX(-${currentIndex * 500}px)`;
-        });
+        // Menjalankan fungsi changeSlide setiap 3 detik (3000ms)
+        setInterval(changeSlide, 3000);
     </script>
 
 </body>
-
 </html>
