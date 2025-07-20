@@ -22,14 +22,7 @@
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600">Kegiatan</a></li>
-                <!-- Link untuk dashboard berdasarkan role -->
-                @if (Auth::check())
-                    @if (Auth::user()->role == 'perawat')
-                        <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-red-600">Dashboard</a></li>
-                    @elseif (Auth::user()->role == 'pasien')
-                        <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
-                    @endif
-                @endif
+                <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
                 <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
             
@@ -58,9 +51,10 @@
         <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
         <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600 transition">Tentang</a></li>
         <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
-        <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
+        <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-red-600 transition">Dashboard</a></li>
       </ul>
     </div>
+  </nav>
 
   <!-- Script toggle mobile menu -->
   <script>
@@ -78,19 +72,24 @@
       <img src="{{ asset('images/Logo_dashboard.png') }}" alt="Logo Dashboard" class="w-8 h-8 rounded-full" />
       <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
     </div>
+
+    <!-- Search Bar dan Menu Ikon di kanan -->
+    <div class="flex flex-col items-end space-y-4">
+
       <!-- Menu Ikon di bawah Search -->
       <div class="flex items-center space-x-6">
         <!-- Profile -->
-        <a href="{{ url('/dashboard') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+        <a href="{{ url('/dashboard_perawat') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
           <img src="{{ asset('images/icon-profile.png') }}" alt="Profile Icon" class="w-6 h-6" />
           <span>Profile</span>
         </a>
 
         <!-- Check Harian -->
-        <a href="{{ url('/checkharian') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+        <a href="{{ url('/datapasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
           <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
-          <span>Check Harian</span>
+          <span>Data Pasien</span>
         </a>
+
         <!-- Bantuan -->
         <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
           <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
@@ -127,53 +126,43 @@
       <!-- Profile and Actions Section -->
       <div class="col-span-3 bg-white rounded-lg shadow-lg p-6">
         <h2 class="text-2xl font-semibold mb-4">Data Pribadi</h2>
-
         @auth
-        <!-- Check Role and Display Different Content Based on Role -->
-        @if(Auth::user()->role == 'perawat')
-            <div class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Nama</span>
-                    <span class="text-gray-600">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Tugas Perawat</span>
-                    <span class="text-gray-600">Pengawasan pasien, pemeriksaan rutin, dll.</span>
-                </div>
-            </div>
-        @else
-            <div class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Nama</span>
-                    <span class="text-gray-600">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Alamat</span>
-                    <span class="text-gray-600">{{ Auth::user()->address }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Nomor Handphone</span>
-                    <span class="text-gray-600">{{ Auth::user()->phone }}</span>
-                </div>
-            </div>
-        @endif
-        @endauth
+        <div class="space-y-6">
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Nama</span>
+            <span class="text-gray-600">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Alamat</span>
+            <span class="text-gray-600">{{ Auth::user()->address }}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Nomor Handphone</span>
+            <span class="text-gray-600">{{ Auth::user()->phone }}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Jenis Kelamin</span>
+            <span class="text-gray-600">{{ Auth::user()->gender }}</span>
+          </div>
+        </div>
 
         <div class="flex justify-end mt-6">
           <button class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Simpan</button>
           <button class="ml-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-300">Batal</button>
         </div>
+        @endauth
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="text-white">
+    <!-- Bagian atas footer dengan warna biru langit -->
     <div class="py-8 px-4" style="background-color: #0065A4;">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <p class="text-justify text-[12px] text-white">
-            <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis...
+            <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
           </p>
         </div>
         <div class="pl-20">

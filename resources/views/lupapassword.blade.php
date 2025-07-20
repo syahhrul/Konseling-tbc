@@ -50,78 +50,54 @@
     </div>
   </nav>
 
+  <div style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 2rem;">
+    <div style="display: flex; background-color: rgba(255,255,255,0.35); backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); max-width: 960px; width: 100%; overflow: hidden;">
 
-
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-
-  <!-- Login Form -->
-  <div class="login-wrapper">
-    <div class="card-wrapper">
-      <!-- FORM LOGIN -->
-      <div class="login-container">
-
-        <!-- Alert Success -->
-        @if (session('success'))
-        <div class="alert alert-success" style="background-color: #4CAF50; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
-          {{ session('success') }}
-        </div>
-        @endif
+      <!-- Form -->
+      <div style="flex: 1; padding: 3rem;">
+        <h2 style="font-size: 1.75rem; font-weight: bold; color: #1f2937; margin-bottom: 1rem;">Reset Password</h2>
+        <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 1.5rem;">Masukkan Username dan Email Anda lalu buat password baru.</p>
 
         <!-- Alert Error -->
-        @if ($errors->any())
-        <div class="alert alert-danger" style="background-color: #f44336; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
-          <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
+        @if (session('error'))
+        <div style="background-color: #f44336; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+          {{ session('error') }}
         </div>
         @endif
 
-        <h2>Login</h2>
-        <form action="{{ route('login.submit') }}" method="POST">
+        <form action="{{ route('password.update') }}" method="POST">
           @csrf
 
-          <label for="userId">User ID</label>
-          <input type="text" id="userId" name="userId" placeholder="masukkan User ID" required>
+          <label for="username" style="font-weight: bold; color: #1f2937; display: block; margin-bottom: 0.3rem;">Username</label>
+          <input type="text" id="username" name="username" required
+            style="width: 100%; padding: 10px; margin-bottom: 1rem; border-radius: 8px; border: none; background-color: rgba(255,255,255,0.85);" />
 
-          <label for="referral">Kode Referal</label>
-          <input type="text" id="referral" name="referral" placeholder="masukkan kode referal">
+          <label for="email" style="font-weight: bold; color: #1f2937; display: block; margin-bottom: 0.3rem;">Email</label>
+          <input type="email" id="email" name="email" required
+            style="width: 100%; padding: 10px; margin-bottom: 1rem; border-radius: 8px; border: none; background-color: rgba(255,255,255,0.85);" />
 
-          {{-- <label for="role">Sebagai</label>
-          <select id="role" name="role" required>
-            <option selected disabled>Pilih login sebagai peran anda</option>
-            <option value="perawat">Perawat</option>
-            <option value="pasien">Pasien</option>
-          </select> --}}
+          <label for="password" style="font-weight: bold; color: #1f2937; display: block; margin-bottom: 0.3rem;">Password Baru</label>
+          <input type="password" id="password" name="password" required
+            style="width: 100%; padding: 10px; margin-bottom: 1rem; border-radius: 8px; border: none; background-color: rgba(255,255,255,0.85);" />
 
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="masukkan password" required>
+          <label for="password_confirmation" style="font-weight: bold; color: #1f2937; display: block; margin-bottom: 0.3rem;">Konfirmasi Password</label>
+          <input type="password" id="password_confirmation" name="password_confirmation" required
+            style="width: 100%; padding: 10px; margin-bottom: 1.5rem; border-radius: 8px; border: none; background-color: rgba(255,255,255,0.85);" />
 
-          <div class="lupa-password font-semibold text-right text-red-600 mb-2">
-          <a href="{{ route('lupapassword') }}">Lupa Password</a>
-          </div>
-
-          <button type="submit">Login</button>
+          <button type="submit"
+            style="width: 100%; padding: 10px; background-color: #004b6b; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+            Ubah Password
+          </button>
         </form>
-
-        <div class="login-footer">
-         Kamu tidak memiliki akun? <a href="{{ route('register.step1') }}">Daftar Sekarang</a>
-        </div>
       </div>
 
-      <!-- GAMBAR PERAWAT -->
-      <div class="nurse-illustration">
-        <img src="{{ asset('images/perawat.png') }}" alt="Nurse Illustration">
+      <!-- Gambar -->
+      <div style="flex: 1; display: flex; align-items: center; justify-content: center; background-color: rgba(255,255,255,0.15);">
+        <img src="{{ asset('images/perawat.png') }}" alt="Perawat" style="max-width: 100%; height: auto;" />
       </div>
     </div>
   </div>
+
 
   <!-- Footer -->
   <footer class="text-white mt-10">

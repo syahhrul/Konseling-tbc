@@ -6,6 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PKU Bantul - Penanggulangan TBC</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Efek Hover - Semua gambar naik saat cursor berada di atasnya */
+        img {
+            transition: transform 0.3s ease-in-out; /* Transisi halus untuk efek pergeseran */
+        }
+
+        img:hover {
+            transform: translateY(-10px); /* Menggeser gambar ke atas saat dihover */
+        }
+
+        /* Efek Hover pada tombol "Lihat Selengkapnya" */
+        .btn-hover {
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Transisi halus */
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-5px); /* Menggeser tombol ke atas saat dihover */
+            background-color: #e53e3e; /* Mengubah warna latar belakang */
+        }
+
+        /* Styling untuk tab yang aktif */
+        .active {
+            font-weight: bold;
+            color: #e53e3e; /* Warna untuk tab aktif */
+        }
+
+        /* Tambahan styling untuk smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body class="font-sans text-gray-800" style="background-color: #87CEFA;">
@@ -44,17 +75,16 @@
 
         <!-- Navbar mini sticky -->
         <nav class="flex space-x-4 overflow-x-auto pb-4 border-b border-gray-300 sticky top-0 bg-white z-20">
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="deskripsi">Deskripsi</button>
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="penyebab">Penyebab</button>
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="gejala">Gejala</button>
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="pengobatan">Pengobatan</button>
-            <button class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap" data-target="pencegahan">Pencegahan</button>
+            <a href="#deskripsi" class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap">Deskripsi</a>
+            <a href="#penyebab" class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap">Penyebab</a>
+            <a href="#gejala" class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap">Gejala</a>
+            <a href="#pengobatan" class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap">Pengobatan</a>
+            <a href="#pencegahan" class="tab-btn px-4 py-2 text-blue-700 whitespace-nowrap">Pencegahan</a>
         </nav>
 
         <!-- Sections -->
         <div id="deskripsi" class="py-8 grid md:grid-cols-2 gap-8 items-center">
-            <img src="{{ asset('images/tbc-info.jpg') }}" alt="Ilustrasi Paru-Paru"
-                class="rounded-xl shadow-lg order-2 md:order-1">
+            <img src="{{ asset('images/tbc-info.jpg') }}" alt="Ilustrasi Paru-Paru" class="rounded-xl shadow-lg order-2 md:order-1">
             <div class="order-1 md:order-2">
                 <h2 class="text-3xl font-bold mb-4 text-gray-800">Apa Itu TBC?</h2>
                 <p class="text-gray-700 leading-relaxed">
@@ -88,8 +118,7 @@
         </div>
 
         <div id="gejala" class="py-8 grid md:grid-cols-2 gap-8 items-center">
-            <img src="{{ asset('images/gejala-tbc.png') }}" alt="Orang Batuk"
-                class="rounded-xl shadow-lg order-2 md:order-1">
+            <img src="{{ asset('images/gejala-tbc.png') }}" alt="Orang Batuk" class="rounded-xl shadow-lg order-2 md:order-1">
             <div class="order-1 md:order-2">
                 <h2 class="text-3xl font-bold mb-4 text-gray-800">Gejala TBC</h2>
                 <ul class="list-disc pl-5 space-y-2 text-gray-700">

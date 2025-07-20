@@ -22,7 +22,7 @@ class LoginController extends Controller
         $request->validate([
             'userId'   => 'required|string', // Menggunakan userId
             'password' => 'required', // Validasi password
-            'role'     => 'required|in:perawat,pasien', // Validasi role
+            // 'role'     => 'required|in:perawat,pasien', // Validasi role
         ]);
 
         // Mencari user berdasarkan userId
@@ -30,16 +30,10 @@ class LoginController extends Controller
 
         // Cek jika user ada dan password valid
         if ($user && Auth::attempt(['username' => $request->userId, 'password' => $request->password])) {
-            // Jika login berhasil, cek apakah role sesuai
-            if ($user->role === $request->role) {
-                // Jika sesuai, arahkan ke halaman yang diinginkan setelah login
-                return redirect()->route('welcomeafterlogin'); // Menggunakan redirect()->route untuk pengalihan yang lebih jelas
-            } else {
-                // Logout jika role tidak sesuai
-                Auth::logout();
-                return back()->withErrors(['role' => 'Peran tidak sesuai.']);
-            }
-        }
+        // Jika login berhasil, arahkan ke halaman yang diinginkan setelah login
+        return redirect()->route('welcomeafterlogin'); // Menggunakan redirect()->route untuk pengalihan yang lebih jelas
+}
+
 
         // Jika user tidak ditemukan atau password salah
         return back()->withErrors(['email' => 'Email atau password salah.']);
@@ -54,5 +48,35 @@ class LoginController extends Controller
 
         // Redirect ke halaman login setelah logout
         return redirect()->route('login')->with('success', 'Berhasil logout.');
+    }
+
+    public function login(Request $request)
+    {
+        // Validasi input login
+        $request->validate([
+            'userId' => 'required',
+            'password' => 'required',
+            'role' => 'required', // Pastikan role terisi
+        ]);
+
+        // // Cek kredensial login
+        // if (Auth::attempt(['user_id' => $request->userId, 'password' => $request->password])) {
+        //     $role = Auth::user()->role;
+            
+        //     // Menyimpan role pada session untuk digunakan di dashboard
+        //     session(['role' => $role]);
+
+        //     // Arahkan pengguna berdasarkan role
+        //     if ($role == 'perawat') {
+        //         return redirect()->route('dashboard_perawat');  // Menuju ke dashboard perawat
+        //     } elseif ($role == 'pasien') {
+        //         return redirect()->route('dashboard');  // Menuju ke dashboard pasien
+        //     } else {
+        //         return redirect()->route('login')->withErrors('Peran tidak valid.');
+        //     }
+        // } else {
+        //     // Login gagal
+        //     return back()->withErrors('Gagal login. Cek kembali User ID atau Password.');
+        // }
     }
 }

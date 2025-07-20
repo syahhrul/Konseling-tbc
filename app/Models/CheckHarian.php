@@ -14,7 +14,22 @@ class CheckHarian extends Model
 
     // Tentukan kolom yang dapat diisi (mass assignable)
     protected $fillable = [
-        'user_id', 'frekuensi_batuk', 'panas', 'keringat_dingin', 
-        'lupa_minum_obat', 'alasan_lupa', 'mual_saat_minum_obat', 'berat_badan_turun'
+        'user_id', 
+        'frekuensi_batuk', 
+        'panas', 
+        'keringat_dingin', 
+        'lupa_minum_obat', 
+        'alasan_lupa', 
+        'mual_saat_minum_obat', 
+        'berat_badan_turun'
     ];
+
+    /**
+     * Relasi: CheckHarian belongs to User
+     * Mendapatkan informasi pengguna yang mengisi data check_harian
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id'); // Pastikan user_id mengarah ke tabel users
+    }
 }

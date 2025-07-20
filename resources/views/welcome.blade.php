@@ -6,6 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PKU Bantul - Penanggulangan TBC</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Efek Hover - Gambar naik saat cursor berada di atasnya */
+        #carousel-inner img,
+        .hover-effect img {
+            transition: transform 0.3s ease-in-out; /* Transisi halus */
+        }
+
+        #carousel-inner img:hover,
+        .hover-effect img:hover {
+            transform: translateY(-10px); /* Menggeser gambar ke atas saat dihover */
+        }
+
+        /* Efek Hover pada tombol "Lihat Selengkapnya" */
+        .btn-hover {
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Transisi halus */
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-5px); /* Menggeser tombol ke atas saat dihover */
+            background-color: #e53e3e; /* Mengubah warna latar belakang */
+        }
+    </style>
 </head>
 
 <body class="font-sans text-gray-800" style="background-color: #87CEFA;">
@@ -87,7 +109,7 @@
         </div>
     </section>
 
-<!-- TBC Section -->
+    <!-- TBC Section -->
     <section class="section py-12">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-4 max-w-6xl">
             <div class="md:w-1/2 text-gray-800">
@@ -99,10 +121,10 @@
                     TBC memerlukan kerjasama dari berbagai pihak dan edukasi kepada masyarakat luas.
                 </p>
                 <a href={{ url('/pusatinfotbc') }}
-                    class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">Lihat
+                    class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 btn-hover">Lihat
                     Selengkapnya</a>
             </div>
-            <div class="md:w-5/12 text-center">
+            <div class="md:w-5/12 text-center hover-effect">
                 <img src="{{ asset('images/paru-paru.jpg') }}" alt="Paru-paru" class="mx-auto w-72 object-contain" />
             </div>
         </div>
@@ -116,9 +138,9 @@
                 <p class="leading-relaxed text-lg">
                     Kami bekerja sama dan mengembangkan kemitraan dengan Pemerintah, organisasi internasional dan organisasi lokal dalam meningkatkan peran serta masyarakat dalam upaya penanggulangan tuberkulosis secara efektif dan berkelanjutan.
                 </p>
-                <a href="{{ url('/tentang') }}" class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700">Selengkapnya</a>
+                <a href="{{ url('/tentang') }}" class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 btn-hover">Selengkapnya</a>
             </div>
-            <div class="md:w-5/12 text-center">
+            <div class="md:w-5/12 text-center hover-effect">
                 <img src="{{ asset('images/dinkes.jpg') }}" alt="Dinas Kesehatan" class="mx-auto w-full max-w-md object-contain" />
             </div>
         </div>
@@ -162,9 +184,25 @@
     <script>
         const menuBtn = document.getElementById("menuBtn");
         const mobileMenu = document.getElementById("mobileMenu");
+        const carouselInner = document.getElementById("carousel-inner");
+        let currentSlide = 0;
+
         menuBtn.addEventListener("click", () => {
             mobileMenu.classList.toggle("hidden");
         });
+
+        // Fungsi untuk mengubah slide secara otomatis
+        function changeSlide() {
+            const slides = carouselInner.querySelectorAll("img");
+            const totalSlides = slides.length;
+
+            currentSlide = (currentSlide + 1) % totalSlides; // Menentukan slide berikutnya
+            const offset = -currentSlide * 500; // Pindahkan ke slide yang sesuai (500px adalah lebar gambar)
+            carouselInner.style.transform = `translateX(${offset}px)`; // Menggeser gambar
+        }
+
+        // Menjalankan fungsi changeSlide setiap 3 detik (3000ms)
+        setInterval(changeSlide, 3000);
     </script>
 
 </body>

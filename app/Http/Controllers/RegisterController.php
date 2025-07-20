@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'email'     => 'required|email|unique:users,email',
             'telepon'   => 'required|string|max:20',
             'username'  => 'required|string|max:50|unique:users,username',
-            'role'      => 'required|in:perawat,pasien',
+            // 'role'      => 'required|in:perawat,pasien',
             'password'  => 'required|string|confirmed|min:6',
         ]);
 
@@ -75,7 +75,7 @@ class RegisterController extends Controller
                 'email'      => $request->email,
                 'phone'      => $request->telepon,
                 'username'   => $request->username,
-                'role'       => $request->role,
+                // 'role'       => $request->role,
                 'password'   => Hash::make($request->password),
             ]);
 

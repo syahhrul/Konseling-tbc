@@ -45,12 +45,12 @@
           <label for="username">Username</label>
           <input type="text" id="username" name="username" placeholder="buat username" required>
 
-          <label for="role">Daftar Sebagai</label>
+          {{-- <label for="role">Daftar Sebagai</label>
           <select name="role" id="role" required>
             <option value="">-- Pilih peran --</option>
             <option value="perawat">Perawat</option>
             <option value="pasien">Pasien</option>
-          </select>
+          </select> --}}
 
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="buat password" required>
