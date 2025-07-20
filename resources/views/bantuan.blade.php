@@ -10,37 +10,46 @@
     <style>
         /* Efek Hover - Gambar naik saat cursor berada di atasnya */
         .hover-effect img {
-            transition: transform 0.3s ease-in-out; /* Transisi halus */
+            transition: transform 0.3s ease-in-out;
+            /* Transisi halus */
         }
 
         .hover-effect img:hover {
-            transform: translateY(-10px); /* Menggeser gambar ke atas saat dihover */
+            transform: translateY(-10px);
+            /* Menggeser gambar ke atas saat dihover */
         }
 
         /* Efek Hover pada tombol "Lihat Selengkapnya" */
         .btn-hover {
-            transition: transform 0.3s ease, background-color 0.3s ease; /* Transisi halus */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            /* Transisi halus */
         }
 
         .btn-hover:hover {
-            transform: translateY(-5px); /* Menggeser tombol ke atas saat dihover */
-            background-color: #e53e3e; /* Mengubah warna latar belakang */
+            transform: translateY(-5px);
+            /* Menggeser tombol ke atas saat dihover */
+            background-color: #e53e3e;
+            /* Mengubah warna latar belakang */
         }
 
         /* Efek animasi untuk teks "Kami siap membantu Anda!" */
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
-                transform: translateY(30px); /* Menempatkan teks di bawah awal */
+                transform: translateY(30px);
+                /* Menempatkan teks di bawah awal */
             }
+
             100% {
                 opacity: 1;
-                transform: translateY(0); /* Menampilkan teks ke posisi semula */
+                transform: translateY(0);
+                /* Menampilkan teks ke posisi semula */
             }
         }
 
         .animated-text {
-            animation: fadeInUp 1.5s ease-out forwards; /* Durasi 1.5 detik dengan easing */
+            animation: fadeInUp 1.5s ease-out forwards;
+            /* Durasi 1.5 detik dengan easing */
         }
     </style>
 </head>
@@ -63,13 +72,18 @@
                 <!-- Menampilkan link Dashboard berdasarkan Role -->
                 @if (Auth::check())
                     @if (Auth::user()->role == 'perawat')
-                        <li><a href="{{ route('dashboard_perawat') }}" class="hover:text-yellow-400 {{ Route::is('dashboard_perawat') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+                        <li><a href="{{ route('dashboard_perawat') }}"
+                                class="hover:text-yellow-400 {{ Route::is('dashboard_perawat') ? 'text-yellow-300' : '' }}">Dashboard</a>
+                        </li>
                     @elseif (Auth::user()->role == 'pasien')
-                        <li><a href="{{ route('dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
+                        <li><a href="{{ route('dashboard') }}"
+                                class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a>
+                        </li>
                     @endif
                 @endif
 
-                <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
+                <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition"
+                        style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
 
             <div class="flex items-center space-x-4">
@@ -98,6 +112,20 @@
                 <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
                 <span>Check Harian</span>
             </a>
+
+            <!-- Check Harian -->
+            <a href="{{ url('/datapasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+                <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
+                <span>Data Pasien</span>
+            </a>
+
+            {{-- Input Data Pasien --}}
+            <a href="{{ url('/inputdatapasien') }}"
+                class="flex items-center space-x-2 text-white hover:text-yellow-400">
+                <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
+                <span>Input Data Pasien</span>
+            </a>
+            
             <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                 <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
                 <span>Bantuan</span>
@@ -106,7 +134,8 @@
     </section>
 
     <!-- Hero Section with Gradient -->
-    <section class="bg-gradient-to-r from-[#003C62] via-[#3C77A0] to-[#66AEDA] text-white py-20 px-10 flex flex-col items-center justify-center">
+    <section
+        class="bg-gradient-to-r from-[#003C62] via-[#3C77A0] to-[#66AEDA] text-white py-20 px-10 flex flex-col items-center justify-center">
         <h2 class="text-4xl font-bold mb-6 font-poppins animated-text">Kami siap membantu Anda!</h2>
     </section>
 
@@ -120,7 +149,8 @@
                 <p class="text-gray-600">Langkah awal mengakses layanan Anda</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md text-center hover-effect">
-                <img src="{{ asset('images/personalisasi.png') }}" alt="Personalization" class="w-16 h-16 mx-auto mb-4" />
+                <img src="{{ asset('images/personalisasi.png') }}" alt="Personalization"
+                    class="w-16 h-16 mx-auto mb-4" />
                 <h3 class="font-bold text-lg text-gray-800">Personalisasi</h3>
                 <p class="text-gray-600">Sesuaikan layanan sesuai kebutuhan Anda</p>
             </div>
@@ -153,7 +183,11 @@
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <p class="text-justify text-[12px] text-white">
-                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
+                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri
+                        Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang
+                        bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah
+                        satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki
+                        akses terbatas terhadap pelayanan kesehatan.
                     </p>
                 </div>
                 <div class="pl-20">
@@ -169,10 +203,14 @@
                 <div>
                     <h3 class="font-bold mb-2">Temukan Kami</h3>
                     <div class="flex space-x-4">
-                        <a href="#"><img src="images/logo_facebook.png" alt="Facebook" class="w-6 h-6 object-contain"></a>
-                        <a href="#"><img src="images/logo_instagram.png" alt="Instagram" class="w-6 h-6 object-contain"></a>
-                        <a href="#"><img src="images/logo_whatsapp.png" alt="WhatsApp" class="w-6 h-6 object-contain"></a>
-                        <a href="#"><img src="images/logo_youtube.png" alt="YouTube" class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_facebook.png" alt="Facebook"
+                                class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_instagram.png" alt="Instagram"
+                                class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_whatsapp.png" alt="WhatsApp"
+                                class="w-6 h-6 object-contain"></a>
+                        <a href="#"><img src="images/logo_youtube.png" alt="YouTube"
+                                class="w-6 h-6 object-contain"></a>
                     </div>
                 </div>
             </div>
@@ -184,4 +222,5 @@
     </footer>
 
 </body>
+
 </html>

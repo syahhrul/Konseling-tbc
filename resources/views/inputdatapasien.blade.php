@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Check Harian - PKU Bantul</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    {{-- @vite('resources/css/app.css')
-<link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-
 </head>
 
 <body class="font-sans bg-gray-50">
@@ -77,7 +73,6 @@
                     <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
                     <span>Input Data Pasien</span>
                 </a>
-
                 <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                     <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
                     <span>Bantuan</span>
@@ -87,24 +82,64 @@
     </section>
 
     <!-- Main Content Section -->
-    <!-- Chart.js Script (simpan sebelum </body> atau di bawah halaman) -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <section class="py-10 px-6 bg-white shadow-md rounded-xl">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Input Data Pasien TBC</h2>
+            <form action="{{ route('pasien-tbc.store') }}" method="POST" class="space-y-4">
+                @csrf
 
-    <section class="py-10 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- History Pasien atau Perawat lainnya -->
-            {{-- Konten dashboard lainnya tetap dipertahankan --}}
-        </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Nama Pasien</label>
+                    <input type="text" name="nama" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                        required>
+                </div>
 
-        <!-- Chart Section -->
-        <div class="max-w-4xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold mb-4 text-gray-800">Statistik Pasien TBC Berdasarkan Stadium</h2>
-            {{-- <canvas id="stadiumChart"></canvas> --}}
-            {{-- <canvas id="stadiumChart" width="400" height="200"></canvas> --}}
-            <canvas id="stadiumPieChart" class="w-48 h-48"></canvas>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Usia</label>
+                    <input type="number" name="usia" min="0"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                    <select name="jenis_kelamin" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Tanggal Diagnosis</label>
+                    <input type="date" name="tanggal_diagnosis"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Stadium</label>
+                    <select name="stadium" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <option value="Awal">Awal</option>
+                        <option value="Sedang">Sedang</option>
+                        <option value="Lanjut">Lanjut</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Status Pengobatan</label>
+                    <select name="status_pengobatan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <option value="Belum Mulai">Belum Mulai</option>
+                        <option value="Sedang Berlangsung">Sedang Berlangsung</option>
+                        <option value="Selesai">Selesai</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                        Simpan Data
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
-
 
 
     <!-- Footer -->
@@ -150,71 +185,6 @@
         </div>
     </footer>
 
-
-
 </body>
-
-{{-- <script>
-    // const pieLabels = {!! json_encode($labels ?? []) !!};
-    // const pieData = {!! json_encode($data ?? []) !!};
-
-    const ctx = document.getElementById('stadiumPieChart').getContext('2d');
-    const pieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: pieLabels,
-            datasets: [{
-                label: 'Jumlah Stadium TBC',
-                data: pieData,
-                backgroundColor: [
-                    '#FF6384', '#36A2EB', '#FFCE56', '#66BB6A', '#BA68C8',
-                    '#FFA726', '#8D6E63', '#26C6DA', '#D4E157', '#5C6BC0'
-                ],
-                borderColor: '#fff',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-</script> --}}
-<script>
-        const ctx = document.getElementById('stadiumPieChart').getContext('2d');
-
-        const data = {
-            labels: ['Stadium 1', 'Stadium 2', 'Stadium 3'],
-            datasets: [{
-                label: 'Jumlah Pasien',
-                data: [10, 5, 7], // <-- Ganti ini dengan data dinamis kalau sudah bisa
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        const config = {
-            type: 'pie',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    }
-                }
-            }
-        };
-
-        new Chart(ctx, config);
-    </script>
 
 </html>

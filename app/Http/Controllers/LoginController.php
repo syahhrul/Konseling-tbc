@@ -16,28 +16,63 @@ class LoginController extends Controller
     
 
     // Proses form login
-    public function submitLogin(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'userId'   => 'required|string', // Menggunakan userId
-            'password' => 'required', // Validasi password
-            // 'role'     => 'required|in:perawat,pasien', // Validasi role
-        ]);
+//     public function submitLogin(Request $request)
+//     {
+//         // Validasi input
+//         $request->validate([
+//             'userId'   => 'required|string', // Menggunakan userId
+//             'password' => 'required', // Validasi password
+//             // 'role'     => 'required|in:perawat,pasien', // Validasi role
+//         ]);
 
-        // Mencari user berdasarkan userId
-        $user = User::where('username', $request->userId)->first(); // Cari user berdasarkan username (userId)
+//         // Mencari user berdasarkan userId
+//         $user = User::where('username', $request->userId)->first(); // Cari user berdasarkan username (userId)
 
-        // Cek jika user ada dan password valid
-        if ($user && Auth::attempt(['username' => $request->userId, 'password' => $request->password])) {
-        // Jika login berhasil, arahkan ke halaman yang diinginkan setelah login
-        return redirect()->route('welcomeafterlogin'); // Menggunakan redirect()->route untuk pengalihan yang lebih jelas
+//         // Cek jika user ada dan password valid
+//         if ($user && Auth::attempt(['username' => $request->userId, 'password' => $request->password])) {
+//         // Jika login berhasil, arahkan ke halaman yang diinginkan setelah login
+//         return redirect()->route('welcomeafterlogin'); // Menggunakan redirect()->route untuk pengalihan yang lebih jelas
+// }
+
+
+//         // Jika user tidak ditemukan atau password salah
+//         return back()->withErrors(['email' => 'Email atau password salah.']);
+//     }
+
+
+public function submitLogin(Request $request)
+{
+    $request->validate([
+        'userId' => 'required|string',
+        'password' => 'required',
+    ]);
+
+    // Ambil user berdasarkan username
+    $user = User::where('username', $request->userId)->first();
+
+    if (!$user) {
+        return back()->withErrors(['userId' => 'Username tidak ditemukan.']);
+    }
+
+    // Cek password
+    if (!\Hash::check($request->password, $user->password)) {
+        return back()->withErrors(['password' => 'Password salah.']);
+    }
+
+    // Login user
+    Auth::login($user);
+
+    // Arahkan berdasarkan role
+    if ($user->role === 'perawat') {
+        return redirect()->route('dashboard_perawat');
+    } elseif ($user->role === 'pasien') {
+        return redirect()->route('dashboard');
+    } else {
+        Auth::logout(); // Logout jika role tidak dikenali
+        return back()->withErrors(['userId' => 'Role tidak dikenali.']);
+    }
 }
 
-
-        // Jika user tidak ditemukan atau password salah
-        return back()->withErrors(['email' => 'Email atau password salah.']);
-    }
 
     // Logout user
     public function logout(Request $request)

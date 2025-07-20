@@ -90,10 +90,17 @@
           <span>Data Pasien</span>
         </a>
 
+         {{-- Input Data Pasien --}}
+         <a href="{{ url('/inputdatapasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+          <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
+          <span>Input Data Pasien</span>
+        </a>
+
         <!-- Bantuan -->
         <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
           <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
           <span>Bantuan</span>
+          
         </a>
       </div>
     </div>

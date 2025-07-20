@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CheckHarianController;
 use App\Http\Controllers\NewPasswordController;
+use App\Http\Controllers\DashboardController;
 
 
 // Register multi-step
@@ -156,3 +157,31 @@ Route::get('/lupapassword', function () {
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 Route::post('/reset-password', [NewPasswordController::class, 'update'])->name('password.update');
+
+Route::get('/dashboard_perawat', function () {
+    return view('dashboard_perawat'); // sesuaikan dengan file view-mu
+})->name('dashboard_perawat')->middleware(['auth']);
+
+// Route::get('/dashboard_perawat', [DashboardController::class, 'index'])->name('dashboard_perawat');
+
+Route::get('/dashboard', function () {
+    return view('dashboard'); // sesuaikan juga
+})->name('dashboard')->middleware(['auth']);
+
+Route::get('/inputdatapasien', function () {
+    return view('inputdatapasien');
+});
+
+use App\Http\Controllers\PasienTbcController;
+
+Route::post('/pasien-tbc/store', [PasienTbcController::class, 'store'])->name('pasien-tbc.store');
+
+
+
+// Route::get('/datapasien', [DashboardController::class, 'showDataPasien'])->name('datapasien');
+
+
+// Route::get('/datapasien', [DashboardController::class, 'dataPasien']);
+use App\Http\Controllers\ChartStadiumController;
+
+Route::get('/chart-stadium', [ChartStadiumController::class, 'showChart']);
