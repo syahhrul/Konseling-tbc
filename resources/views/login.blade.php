@@ -26,39 +26,7 @@
         <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
       </ul>
     </div>
-
-    <!-- Mobile Menu -->
-    <div class="md:hidden">
-      <button id="menuBtn" class="focus:outline-none">
-        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-
-    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
-      <ul class="space-y-4 text-gray-700 font-medium">
-        <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
-        <li><a href="{{ url('/tentang') }}" class="hover:text-red-600 transition">Tentang</a></li>
-        <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
-        <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
-        <li><a href="{{ url('/login') }}" class="hover:text-red-600 transition">Login</a></li>
-        <li><a href="{{ url('/register') }}" class="hover:text-red-600 transition">Daftar</a></li>
-      </ul>
-    </div>
   </nav>
-
-
-
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
 
   <!-- Login Form -->
   <div class="login-wrapper">
@@ -87,32 +55,22 @@
         <h2>Login</h2>
         <form action="{{ route('login.submit') }}" method="POST">
           @csrf
-
-          <label for="userId">User ID</label>
-          <input type="text" id="userId" name="userId" placeholder="masukkan User ID" required>
-
-          <label for="referral">Kode Referal</label>
-          <input type="text" id="referral" name="referral" placeholder="masukkan kode referal">
-
-          {{-- <label for="role">Sebagai</label>
-          <select id="role" name="role" required>
-            <option selected disabled>Pilih login sebagai peran anda</option>
-            <option value="perawat">Perawat</option>
-            <option value="pasien">Pasien</option>
-          </select> --}}
+          
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Masukkan Username" required>
 
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="masukkan password" required>
+          <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
 
           <div class="lupa-password font-semibold text-right text-red-600 mb-2">
-          <a href="{{ route('lupapassword') }}">Lupa Password</a>
+            <a href="{{ route('lupapassword') }}">Lupa Password</a>
           </div>
 
           <button type="submit">Login</button>
         </form>
 
         <div class="login-footer">
-         Kamu tidak memiliki akun? <a href="{{ route('register.step1') }}">Daftar Sekarang</a>
+          Kamu tidak memiliki akun? <a href="{{ route('register.step1') }}">Daftar Sekarang</a>
         </div>
       </div>
 

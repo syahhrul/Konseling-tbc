@@ -21,9 +21,8 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['Laki-laki', 'Perempuan', 'Lainnya']);
             $table->string('address');
             $table->string('phone');
-            $table->string('email')->unique();
-            $table->string('username')->unique();
-            // $table->string('role');
+            $table->string('email')->unique(); // Email unik
+            $table->string('username')->unique(); // Username unik
             $table->string('password');
             $table->timestamps();
         });

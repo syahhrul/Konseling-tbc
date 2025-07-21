@@ -96,12 +96,17 @@
       </div>
     </div>
   </section>
-
 <div class="container mt-8">
+    <!-- Dashboard Title -->
+    <div class="text-center mb-8">
+        <h2 class="text-3xl font-semibold text-blue-600">DASHBOARD PASIEN TBC</h2>
+    </div>
+
+    <!-- Identitas Pasien dan Status Pengobatan -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Identitas Pasien -->
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-500">Identitas Pasien</h3>
+        <div class="bg-blue-500 text-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-center">Identitas Pasien</h3>
             <ul class="space-y-3">
                 <li><strong>Nama:</strong> R.A.</li>
                 <li><strong>No. Rekam Medis:</strong> RM0021</li>
@@ -112,8 +117,8 @@
         </div>
 
         <!-- Status Pengobatan -->
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-500">Status Pengobatan</h3>
+        <div class="bg-blue-500 text-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-center">Status Pengobatan</h3>
             <ul class="space-y-3">
                 <li><strong>Status:</strong> Aktif</li>
                 <li><strong>Fase:</strong> Intensif</li>
@@ -123,69 +128,75 @@
         </div>
     </div>
 
+<div class="container mt-8">
     <!-- Hasil Cek Harian -->
-    <div class="mt-8 bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-        <h4 class="text-2xl font-semibold mb-4 text-blue-500">Hasil Cek Harian</h4>
-        <table class="min-w-full table-auto border-collapse">
+    <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+        <table class="min-w-full table-auto border-separate border-spacing-0 border border-blue-500">
+            <h4 class="text-xl font-semibold mb-4 text-center bg-blue-500 text-white">Hasil Cek Harian</h4>
             <thead>
-                <tr class="bg-blue-100">
-                    <th class="p-2 border border-blue-500">Tanggal</th>
-                    <th class="p-2 border border-blue-500">Suhu (°C)</th>
-                    <th class="p-2 border border-blue-500">Berat (kg)</th>
-                    <th class="p-2 border border-blue-500">Nafsu Makan</th>
-                    <th class="p-2 border border-blue-500">Minum Obat</th>
-                    <th class="p-2 border border-blue-500">Catatan Pete</th>
+                <tr class="bg-blue-500 text-white">
+                    <th class="p-3 border border-blue-600 text-center">Tanggal</th>
+                    <th class="p-3 border border-blue-600 text-center">Suhu (°C)</th>
+                    <th class="p-3 border border-blue-600 text-center">Berat (kg)</th>
+                    <th class="p-3 border border-blue-600 text-center">Nafsu Makan</th>
+                    <th class="p-3 border border-blue-600 text-center">Minum Obat</th>
+                    <th class="p-3 border border-blue-600 text-center">Catatan Pete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="border-t">
-                    <td class="p-2 border border-blue-500">19-07-2025</td>
-                    <td class="p-2 border border-blue-500">36,8</td>
-                    <td class="p-2 border border-blue-500">52,2</td>
-                    <td class="p-2 border border-blue-500">Batuk ringan</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Tidak ada</td>
+                <tr class="border-t border-blue-600">
+                    <td class="p-3 border border-blue-600 text-center">19-07-2025</td>
+                    <td class="p-3 border border-blue-600 text-center">36,8</td>
+                    <td class="p-3 border border-blue-600 text-center">52,2</td>
+                    <td class="p-3 border border-blue-600 text-center">Batuk ringan</td>
+                    <td class="p-3 border border-blue-600 text-center">Ya</td>
+                    <td class="p-3 border border-blue-600 text-center">Tidak ada</td>
                 </tr>
-                <tr>
-                    <td class="p-2 border border-blue-500">20-07-2025</td>
-                    <td class="p-2 border border-blue-500">37,2</td>
-                    <td class="p-2 border border-blue-500">51,8</td>
-                    <td class="p-2 border border-blue-500">Demam, batuk</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Mual ringan</td>
+                <tr class="border-t border-blue-600">
+                    <td class="p-3 border border-blue-600 text-center">20-07-2025</td>
+                    <td class="p-3 border border-blue-600 text-center">37,2</td>
+                    <td class="p-3 border border-blue-600 text-center">51,8</td>
+                    <td class="p-3 border border-blue-600 text-center">Demam, batuk</td>
+                    <td class="p-3 border border-blue-600 text-center">Ya</td>
+                    <td class="p-3 border border-blue-600 text-center">Mual ringan</td>
                 </tr>
-                <tr>
-                    <td class="p-2 border border-blue-500">21-07-2025</td>
-                    <td class="p-2 border border-blue-500">36,9</td>
-                    <td class="p-2 border border-blue-500">52</td>
-                    <td class="p-2 border border-blue-500">Tidak ada</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Kondisi</td>
+                <tr class="border-t border-blue-600">
+                    <td class="p-3 border border-blue-600 text-center">21-07-2025</td>
+                    <td class="p-3 border border-blue-600 text-center">36,9</td>
+                    <td class="p-3 border border-blue-600 text-center">52</td>
+                    <td class="p-3 border border-blue-600 text-center">Tidak ada</td>
+                    <td class="p-3 border border-blue-600 text-center">Ya</td>
+                    <td class="p-3 border border-blue-600 text-center">Kondisi</td>
                 </tr>
-                <tr>
-                    <td class="p-2 border border-blue-500">22-07-2025</td>
-                    <td class="p-2 border border-blue-500">36,6</td>
-                    <td class="p-2 border border-blue-500">52,2</td>
-                    <td class="p-2 border border-blue-500">Baik ada</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Membaik</td>
+                <tr class="border-t border-blue-600">
+                    <td class="p-3 border border-blue-600 text-center">22-07-2025</td>
+                    <td class="p-3 border border-blue-600 text-center">36,6</td>
+                    <td class="p-3 border border-blue-600 text-center">52,2</td>
+                    <td class="p-3 border border-blue-600 text-center">Baik ada</td>
+                    <td class="p-3 border border-blue-600 text-center">Ya</td>
+                    <td class="p-3 border border-blue-600 text-center">Membaik</td>
                 </tr>
             </tbody>
         </table>
     </div>
+</div>
 
-    <!-- Durasi Pengobatan -->
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h5 class="text-xl font-semibold text-blue-500">Durasi Pengobatan</h5>
-            <p>1 Bulan</p>
-            <h5 class="text-xl font-semibold mt-4 text-blue-500">Hari Patuh Obat</h5>
-            <p>30 dari 33</p>
+
+    <!-- Durasi Pengobatan, Hari Patuh Obat, Hari Gejala Aktif -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h5 class="text-xl font-semibold text-center">Durasi Pengobatan</h5>
+            <p class="text-center">1 Bulan</p>
         </div>
 
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h5 class="text-xl font-semibold text-blue-500">Hari Gejala Aktif</h5>
-            <p>4 Hari</p>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h5 class="text-xl font-semibold text-center">Hari Patuh Obat</h5>
+            <p class="text-center">30 dari 33</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h5 class="text-xl font-semibold text-center">Hari Gejala Aktif</h5>
+            <p class="text-center">4 Hari</p>
         </div>
     </div>
 </div>

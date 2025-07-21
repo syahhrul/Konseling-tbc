@@ -25,6 +25,7 @@ Route::get('/login', function () {
 })->name('login');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
+
 // halaman dashboard setelah login
 Route::get('/welcomeafterlogin', function () {
     return view('welcomeafterlogin');
@@ -75,15 +76,6 @@ Route::get('/login', function () {
 
 // Proses login (submit form login)
 Route::post('/login', [LoginController::class, 'submitLogin'])->name('login.submit');
-
-Route::get('/register_step1', function () {
-    return view('register_step1'); // Sesuaikan nama view jika berbeda
-})->name('register.step1');
-
-Route::get('/register_step2', function () {
-    return view('register_step2'); // pastikan file register_step2.blade.php ada
-})->name('register.step2');
-
 
 Route::get('/tentangafterlogin', function () {
     return view('tentangafterlogin');

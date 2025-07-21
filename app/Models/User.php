@@ -10,11 +10,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -24,40 +19,34 @@ class User extends Authenticatable
         'email',
         'phone',
         'username',
-        'role',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'birth_date' => 'date',
+    ];
+
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Menentukan kolom yang digunakan untuk autentikasi.
+     * 
+     * @return string
      */
-    protected function casts(): array
+    public function getAuthIdentifierName()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed', // memastikan password di-hash
-            'birth_date' => 'date', // memastikan birth_date di-cast sebagai tanggal
-        ];
+        return 'username';  // Menggunakan 'username' sebagai identifikasi
     }
 
     /**
-     * Relasi: User memiliki banyak CheckHarian
-     * Mengambil semua data check_harian terkait dengan user
+     * Mutator untuk password
      */
-    public function checkHarians()
+    public function setPasswordAttribute($value)
     {
-        return $this->hasMany(CheckHarian::class, 'user_id'); // relasi ke model CheckHarian
+        $this->attributes['password'] = bcrypt($value);
     }
 }

@@ -19,84 +19,43 @@
         <img src="{{ asset('images/logopku.png') }}" alt="Logo PKU" class="h-10" />
         <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
       </a>
-      <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-        <li><a href="#" class="hover:text-red-600">Beranda</a></li>
-        <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
-        <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
-        <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
-      </ul>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="md:hidden">
-      <button id="menuBtn" class="focus:outline-none">
-        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-
-    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg px-4 pt-4 pb-6">
-      <ul class="space-y-4 text-gray-700 font-medium">
-        <li><a href="#" class="hover:text-red-600 transition">Beranda</a></li>
-        <li><a href="{{ url('/tentang') }}" class="hover:text-red-600 transition">Tentang</a></li>
-        <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600 transition">Kegiatan</a></li>
-        <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600 transition">Dashboard</a></li>
-        <li><a href="{{ url('/login') }}" class="hover:text-red-600 transition">Login</a></li>
-        <li><a href="{{ url('/register') }}" class="hover:text-red-600 transition">Daftar</a></li>
-      </ul>
     </div>
   </nav>
 
-  <!-- Script toggle mobile menu -->
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-
-  <!-- Register Form -->
+  <!-- Form Registrasi Tahap 1 -->
   <div class="login-wrapper">
     <div class="card-wrapper">
       <div class="login-container">
         <h2>Register</h2>
         <form action="{{ route('register.step1.post') }}" method="POST">
-    @csrf
-          <label for="nama_depan">Nama depan</label>
-          <input type="text" id="nama_depan" name="nama_depan" placeholder="masukkan Nama Depan" required>
+          @csrf
 
-          <label for="nama_belakang">Nama Belakang (opsional)</label>
-          <input type="text" id="nama_belakang" name="nama_belakang" placeholder="masukkan Nama Belakang">
+          <label for="nama_depan">Nama Depan</label>
+          <input type="text" id="nama_depan" name="nama_depan" placeholder="Masukkan Nama Depan" required>
+
+          <label for="nama_belakang">Nama Belakang (Opsional)</label>
+          <input type="text" id="nama_belakang" name="nama_belakang" placeholder="Masukkan Nama Belakang">
 
           <label for="tanggal_lahir">Tanggal Lahir</label>
           <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
 
           <label for="jenis_kelamin">Jenis Kelamin</label>
           <select id="jenis_kelamin" name="jenis_kelamin" required>
-            <option disabled selected>Pilih jenis kelamin</option>
+            <option disabled selected>Pilih Jenis Kelamin</option>
             <option value="Laki-laki">Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
             <option value="Lainnya">Lainnya</option>
           </select>
 
           <label for="alamat">Alamat</label>
-          <input type="text" id="alamat" name="alamat" placeholder="masukkan alamat anda" required>
+          <input type="text" id="alamat" name="alamat" placeholder="Masukkan Alamat Anda" required>
 
           <button type="submit">Next</button>
-
-</form>
-
         </form>
 
         <div class="login-footer">
-          Already have an account? <a href="{{ route('login') }}">Login now</a>
+          Sudah punya akun? <a href="{{ route('login') }}">Login sekarang</a>
         </div>
-      </div>
-
-      <div class="nurse-illustration">
-        <img src="{{ asset('images/perawat.png') }}" alt="Nurse Illustration">
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
-<!-- register_step2.blade.php -->
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,12 +19,6 @@
         <img src="{{ asset('images/logopku.png') }}" alt="Logo PKU" class="h-10" />
         <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
       </a>
-      <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
-        <li><a href="#" class="hover:text-red-600">Beranda</a></li>
-        <li><a href="{{ url('/tentang') }}" class="hover:text-red-600">Tentang</a></li>
-        <li><a href="{{ url('/kegiatan') }}" class="hover:text-red-600">Kegiatan</a></li>
-        <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
-      </ul>
     </div>
   </nav>
 
@@ -37,26 +31,19 @@
           @csrf
 
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="masukkan email anda" required>
+          <input type="email" id="email" name="email" placeholder="Masukkan email anda" required>
 
           <label for="telepon">Nomor Telepon</label>
-          <input type="text" id="telepon" name="telepon" placeholder="masukkan nomor telepon" required>
+          <input type="text" id="telepon" name="telepon" placeholder="Masukkan nomor telepon" required>
 
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" placeholder="buat username" required>
-
-          {{-- <label for="role">Daftar Sebagai</label>
-          <select name="role" id="role" required>
-            <option value="">-- Pilih peran --</option>
-            <option value="perawat">Perawat</option>
-            <option value="pasien">Pasien</option>
-          </select> --}}
+          <input type="text" id="username" name="username" placeholder="Buat username" required>
 
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="buat password" required>
+          <input type="password" id="password" name="password" placeholder="Buat password" required>
 
           <label for="password_confirmation">Konfirmasi Password</label>
-          <input type="password" id="password_confirmation" name="password_confirmation" placeholder="ulangi password" required>
+          <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Ulangi password" required>
 
           <button type="submit">Daftar Sekarang</button>
         </form>
@@ -64,10 +51,6 @@
         <div class="login-footer">
           Sudah punya akun? <a href="{{ route('login') }}">Login sekarang</a>
         </div>
-      </div>
-
-      <div class="nurse-illustration">
-        <img src="{{ asset('images/perawat.png') }}" alt="Ilustrasi Perawat">
       </div>
     </div>
   </div>
@@ -91,14 +74,15 @@
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <p class="text-justify text-[12px] text-white">
-            <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular ...
+            <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak.
           </p>
         </div>
         <div class="pl-20">
           <h3 class="text-white text-[14px] font-bold mb-2">Kontak Kami</h3>
           <p class="text-sm">
             Jl. Jend. Sudirman No.124,<br>
-            Nyangkringan, Bantul, ...<br>
+            Nyangkringan, Bantul, Kec. Bantul,<br>
+            Kabupaten Bantul, DIY<br>
             55711
           </p>
         </div>

@@ -63,6 +63,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+            'passwords' => true,  // Menambahkan baris ini jika menggunakan Laravel Passport atau OAuth
         ],
 
         // 'users' => [

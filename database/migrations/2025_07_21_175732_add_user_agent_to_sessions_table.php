@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,19 +14,15 @@ class AddUserAgentToSessionsTable extends Migration
     public function up()
 {
     Schema::table('sessions', function (Blueprint $table) {
-        $table->string('user_agent')->nullable(); // Menambahkan kolom user_agent
+        $table->string('user_agent')->nullable();  // Menambahkan kolom 'user_agent'
     });
 }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('sessions', function (Blueprint $table) {
-            $table->dropColumn('user_agent');  // Menghapus kolom user_agent
-        });
-    }
+public function down()
+{
+    Schema::table('sessions', function (Blueprint $table) {
+        $table->dropColumn('user_agent');  // Menghapus kolom 'user_agent' jika rollback
+    });
+}
+
 }

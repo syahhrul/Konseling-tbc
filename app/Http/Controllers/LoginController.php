@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;  // Menggunakan Hash Facade di sini
 use App\Models\User;
 
 class LoginController extends Controller
@@ -13,30 +14,27 @@ class LoginController extends Controller
     {
         return view('login');
     }
-    
 
     // Proses form login
     public function submitLogin(Request $request)
     {
-        // Validasi input
+        // Validasi input login
         $request->validate([
-            'userId'   => 'required|string', // Menggunakan userId
-            'password' => 'required', // Validasi password
-            // 'role'     => 'required|in:perawat,pasien', // Validasi role
+            'username'   => 'required|string',  // Menggunakan username
+            'password' => 'required|string', // Validasi password
         ]);
 
-        // Mencari user berdasarkan userId
-        $user = User::where('username', $request->userId)->first(); // Cari user berdasarkan username (userId)
+        // Mencari user berdasarkan username
+        $user = User::where('username', $request->username)->first();
 
-        // Cek jika user ada dan password valid
-        if ($user && Auth::attempt(['username' => $request->userId, 'password' => $request->password])) {
-        // Jika login berhasil, arahkan ke halaman yang diinginkan setelah login
-        return redirect()->route('welcomeafterlogin'); // Menggunakan redirect()->route untuk pengalihan yang lebih jelas
-}
-
-
-        // Jika user tidak ditemukan atau password salah
-        return back()->withErrors(['email' => 'Email atau password salah.']);
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Jika password cocok, login berhasil
+            Auth::login($user); // Login user ke session
+            return redirect()->route('welcomeafterlogin')->with('success', 'Login berhasil.');
+        } else {
+            // Jika login gagal
+            return back()->withErrors(['username' => 'User ID atau password salah.']);
+        }
     }
 
     // Logout user
@@ -48,35 +46,5 @@ class LoginController extends Controller
 
         // Redirect ke halaman login setelah logout
         return redirect()->route('login')->with('success', 'Berhasil logout.');
-    }
-
-    public function login(Request $request)
-    {
-        // Validasi input login
-        $request->validate([
-            'userId' => 'required',
-            'password' => 'required',
-            'role' => 'required', // Pastikan role terisi
-        ]);
-
-        // // Cek kredensial login
-        // if (Auth::attempt(['user_id' => $request->userId, 'password' => $request->password])) {
-        //     $role = Auth::user()->role;
-            
-        //     // Menyimpan role pada session untuk digunakan di dashboard
-        //     session(['role' => $role]);
-
-        //     // Arahkan pengguna berdasarkan role
-        //     if ($role == 'perawat') {
-        //         return redirect()->route('dashboard_perawat');  // Menuju ke dashboard perawat
-        //     } elseif ($role == 'pasien') {
-        //         return redirect()->route('dashboard');  // Menuju ke dashboard pasien
-        //     } else {
-        //         return redirect()->route('login')->withErrors('Peran tidak valid.');
-        //     }
-        // } else {
-        //     // Login gagal
-        //     return back()->withErrors('Gagal login. Cek kembali User ID atau Password.');
-        // }
     }
 }
