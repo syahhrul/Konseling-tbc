@@ -90,7 +90,7 @@
             <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
         </div>
         <div class="flex items-center space-x-6">
-            <a href="{{ url('/dashboard') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+            <a href="{{ url('/dashboard_perawat') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                 <img src="{{ asset('images/icon-profile.png') }}" alt="Profile Icon" class="w-6 h-6" />
                 <span>Profile</span>
             </a>

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard</title>
+  <title>Output</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<body class="font-sans bg-gray-50">
-
+<body>
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
         <div class="container mx-auto flex items-center justify-between px-4 py-3">
@@ -71,7 +68,7 @@
     });
   </script>
 
-  <!-- Hero Section -->
+    <!-- Hero Section -->
   <section class="hero bg-[#003C62] text-white py-4 px-6 flex items-center justify-between">
     <!-- Logo dan Judul Dashboard di kiri -->
     <div class="flex items-center space-x-2 mr-4">
@@ -100,74 +97,102 @@
     </div>
   </section>
 
-  <!-- Dashboard Content -->
-  <section class="py-16 px-6">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-      <!-- Sidebar Menu -->
-      <div class="bg-white rounded-lg shadow-lg p-4">
-        @auth
-        <div class="text-center">
-          <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-16 h-16 rounded-full mx-auto mb-4">
-          <span class="block text-xl font-semibold">{{ Auth::user()->username }}</span>
-          <p class="text-gray-600">{{ Auth::user()->role }}</p>
+<div class="container mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Identitas Pasien -->
+        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-500">Identitas Pasien</h3>
+            <ul class="space-y-3">
+                <li><strong>Nama:</strong> R.A.</li>
+                <li><strong>No. Rekam Medis:</strong> RM0021</li>
+                <li><strong>Umur:</strong> 28 Tahun</li>
+                <li><strong>Jenis Kelamin:</strong> Perempuan</li>
+                <li><strong>Jenis TBC:</strong> TBC Paru</li>
+            </ul>
         </div>
-        @endauth
-        <div class="mt-8 space-y-4">
-          @auth
-          <!-- Profile link has been removed -->
-          <!-- Privacy link has been removed -->
-          <!-- Settings link has been removed -->
-          <!-- Logout button has been removed -->
-          @else
-          <p class="text-gray-600">Please <a href="{{ route('login') }}" class="text-blue-600 hover:text-blue-700">log in</a> to view your dashboard.</p>
-          @endauth
+
+        <!-- Status Pengobatan -->
+        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-500">Status Pengobatan</h3>
+            <ul class="space-y-3">
+                <li><strong>Status:</strong> Aktif</li>
+                <li><strong>Fase:</strong> Intensif</li>
+                <li><strong>Jadwal Kontrol Berikutnya:</strong> 24 Juli 2025</li>
+                <li><strong>Kepatuhan Obat:</strong> 90%</li>
+            </ul>
         </div>
-      </div>
-
-      <!-- Profile and Actions Section -->
-      <div class="col-span-3 bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-4">Data Pribadi</h2>
-
-        @auth
-        <!-- Check Role and Display Different Content Based on Role -->
-        @if(Auth::user()->role == 'perawat')
-            <div class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Nama</span>
-                    <span class="text-gray-600">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Tugas Perawat</span>
-                    <span class="text-gray-600">Pengawasan pasien, pemeriksaan rutin, dll.</span>
-                </div>
-            </div>
-        @else
-            <div class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Nama</span>
-                    <span class="text-gray-600">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Alamat</span>
-                    <span class="text-gray-600">{{ Auth::user()->address }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Nomor Handphone</span>
-                    <span class="text-gray-600">{{ Auth::user()->phone }}</span>
-                </div>
-            </div>
-        @endif
-        @endauth
-
-        <div class="flex justify-end mt-6">
-          <button class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Simpan</button>
-          <button class="ml-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-300">Batal</button>
-        </div>
-      </div>
     </div>
-  </section>
 
-    <!-- Footer -->
+    <!-- Hasil Cek Harian -->
+    <div class="mt-8 bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+        <h4 class="text-2xl font-semibold mb-4 text-blue-500">Hasil Cek Harian</h4>
+        <table class="min-w-full table-auto border-collapse">
+            <thead>
+                <tr class="bg-blue-100">
+                    <th class="p-2 border border-blue-500">Tanggal</th>
+                    <th class="p-2 border border-blue-500">Suhu (°C)</th>
+                    <th class="p-2 border border-blue-500">Berat (kg)</th>
+                    <th class="p-2 border border-blue-500">Nafsu Makan</th>
+                    <th class="p-2 border border-blue-500">Minum Obat</th>
+                    <th class="p-2 border border-blue-500">Catatan Pete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-t">
+                    <td class="p-2 border border-blue-500">19-07-2025</td>
+                    <td class="p-2 border border-blue-500">36,8</td>
+                    <td class="p-2 border border-blue-500">52,2</td>
+                    <td class="p-2 border border-blue-500">Batuk ringan</td>
+                    <td class="p-2 border border-blue-500">Ya</td>
+                    <td class="p-2 border border-blue-500">Tidak ada</td>
+                </tr>
+                <tr>
+                    <td class="p-2 border border-blue-500">20-07-2025</td>
+                    <td class="p-2 border border-blue-500">37,2</td>
+                    <td class="p-2 border border-blue-500">51,8</td>
+                    <td class="p-2 border border-blue-500">Demam, batuk</td>
+                    <td class="p-2 border border-blue-500">Ya</td>
+                    <td class="p-2 border border-blue-500">Mual ringan</td>
+                </tr>
+                <tr>
+                    <td class="p-2 border border-blue-500">21-07-2025</td>
+                    <td class="p-2 border border-blue-500">36,9</td>
+                    <td class="p-2 border border-blue-500">52</td>
+                    <td class="p-2 border border-blue-500">Tidak ada</td>
+                    <td class="p-2 border border-blue-500">Ya</td>
+                    <td class="p-2 border border-blue-500">Kondisi</td>
+                </tr>
+                <tr>
+                    <td class="p-2 border border-blue-500">22-07-2025</td>
+                    <td class="p-2 border border-blue-500">36,6</td>
+                    <td class="p-2 border border-blue-500">52,2</td>
+                    <td class="p-2 border border-blue-500">Baik ada</td>
+                    <td class="p-2 border border-blue-500">Ya</td>
+                    <td class="p-2 border border-blue-500">Membaik</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Durasi Pengobatan -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+            <h5 class="text-xl font-semibold text-blue-500">Durasi Pengobatan</h5>
+            <p>1 Bulan</p>
+            <h5 class="text-xl font-semibold mt-4 text-blue-500">Hari Patuh Obat</h5>
+            <p>30 dari 33</p>
+        </div>
+
+        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+            <h5 class="text-xl font-semibold text-blue-500">Hari Gejala Aktif</h5>
+            <p>4 Hari</p>
+        </div>
+    </div>
+</div>
+
+
+</div>
+   <!-- Footer -->
     <footer class="text-white">
         <div class="py-8 px-4" style="background-color: #0065A4;">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -203,5 +228,4 @@
     </footer>
 
 </body>
-
 </html>

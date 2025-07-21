@@ -55,7 +55,7 @@
                     @if (Auth::check())
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="px-4 py-2 text-white rounded-lg transition" style="background-color: #0065A4;">Logout</button>
+                            <button type="submit" class="px-4 py-2 text-white rounded-lg transition" style="background-color: #0065A4;">Login</button>
                         </form>
                     @else
                         <a href="{{ route('login') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color: #0065A4;">Daftar</a>
@@ -152,7 +152,7 @@
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <p class="text-justify text-[12px] text-white">
-                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis...
+                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
                     </p>
                 </div>
                 <div class="pl-20">

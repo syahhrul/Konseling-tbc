@@ -117,7 +117,7 @@
                     dapat dicegah dan disembuhkan jika didiagnosis dan diobati dengan benar dan tepat waktu. Penanganan
                     TBC memerlukan kerjasama dari berbagai pihak dan edukasi kepada masyarakat luas.
                 </p>
-                <a href={{ url('/pusatinfotbc') }}
+                <a href={{ url('/pusatinfotbcafterlogin') }}
                     class="mt-4 inline-block bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 btn-hover">Lihat
                     Selengkapnya</a>
             </div>
@@ -149,7 +149,7 @@
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <p class="text-justify text-[12px] text-white">
-                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis...
+                        <strong>Tuberkulosis (TBC)</strong> adalah penyakit infeksi menular yang disebabkan oleh bakteri Mycobacterium tuberculosis. Penyakit ini umumnya menyerang paru-paru, namun bisa juga menyerang bagian tubuh lain seperti tulang, kelenjar getah bening, ginjal, bahkan otak. TBC termasuk salah satu penyakit infeksi paling mematikan di dunia, terutama di negara berkembang yang memiliki akses terbatas terhadap pelayanan kesehatan.
                     </p>
                 </div>
                 <div class="pl-20">

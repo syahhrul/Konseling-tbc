@@ -6,7 +6,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CheckHarianController;
 use App\Http\Controllers\NewPasswordController;
+use App\Http\Controllers\ProfileController;
 
+Route::post('/update-profile', [ProfileController::class, 'update'])->name('update.profile');
 
 // Register multi-step
 Route::get('/register/step1', [RegisterController::class, 'step1'])->name('register.step1');
@@ -156,3 +158,11 @@ Route::get('/lupapassword', function () {
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 Route::post('/reset-password', [NewPasswordController::class, 'update'])->name('password.update');
+
+Route::get('/pusatinfotbcafterlogin', function () {
+    return view('pusatinfotbcafterlogin');
+})->name('pusatinfotbcafterlogin');
+
+Route::get('/output_pasien', function () {
+    return view('output_pasien');
+});

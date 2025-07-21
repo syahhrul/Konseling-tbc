@@ -22,7 +22,7 @@
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600">Kegiatan</a></li>
-                <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
+                <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-red-600">Dashboard</a></li>
                 <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
             
@@ -54,7 +54,6 @@
         <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-red-600 transition">Dashboard</a></li>
       </ul>
     </div>
-  </nav>
 
   <!-- Script toggle mobile menu -->
   <script>
@@ -75,7 +74,6 @@
 
     <!-- Search Bar dan Menu Ikon di kanan -->
     <div class="flex flex-col items-end space-y-4">
-
       <!-- Menu Ikon di bawah Search -->
       <div class="flex items-center space-x-6">
         <!-- Profile -->
@@ -126,30 +124,41 @@
       <!-- Profile and Actions Section -->
       <div class="col-span-3 bg-white rounded-lg shadow-lg p-6">
         <h2 class="text-2xl font-semibold mb-4">Data Pribadi</h2>
-        @auth
-        <div class="space-y-6">
-          <div class="flex justify-between items-center">
-            <span class="font-medium">Nama</span>
-            <span class="text-gray-600">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+        @auth 
+        <form action="{{ route('update.profile') }}" method="POST">
+          @csrf
+          <div class="space-y-6 mt-6">
+            <div class="flex justify-between items-center">
+              <label for="first_name" class="font-medium">Nama Depan</label>
+              <input type="text" name="first_name" id="first_name" class="text-gray-600 p-2 border border-gray-300 rounded-lg" value="{{ Auth::user()->first_name }}" required>
+            </div>
+            <div class="flex justify-between items-center">
+              <label for="last_name" class="font-medium">Nama Belakang</label>
+              <input type="text" name="last_name" id="last_name" class="text-gray-600 p-2 border border-gray-300 rounded-lg" value="{{ Auth::user()->last_name }}" required>
+            </div>
+            <div class="flex justify-between items-center">
+              <label for="address" class="font-medium">Alamat</label>
+              <input type="text" name="address" id="address" class="text-gray-600 p-2 border border-gray-300 rounded-lg" value="{{ Auth::user()->address }}" required>
+            </div>
+            <div class="flex justify-between items-center">
+              <label for="phone" class="font-medium">Nomor Handphone</label>
+              <input type="text" name="phone" id="phone" class="text-gray-600 p-2 border border-gray-300 rounded-lg" value="{{ Auth::user()->phone }}" required>
+            </div>
+            <div class="flex justify-between items-center">
+              <label for="gender" class="font-medium">Jenis Kelamin</label>
+              <select name="gender" id="gender" class="text-gray-600 p-2 border border-gray-300 rounded-lg">
+                <option value="Laki-laki" {{ Auth::user()->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                <option value="Perempuan" {{ Auth::user()->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                <option value="Lainnya" {{ Auth::user()->gender == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
+              </select>
+            </div>
           </div>
-          <div class="flex justify-between items-center">
-            <span class="font-medium">Alamat</span>
-            <span class="text-gray-600">{{ Auth::user()->address }}</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="font-medium">Nomor Handphone</span>
-            <span class="text-gray-600">{{ Auth::user()->phone }}</span>
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="font-medium">Jenis Kelamin</span>
-            <span class="text-gray-600">{{ Auth::user()->gender }}</span>
-          </div>
-        </div>
 
-        <div class="flex justify-end mt-6">
-          <button class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Simpan</button>
-          <button class="ml-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-300">Batal</button>
-        </div>
+          <div class="flex justify-end mt-6">
+            <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Simpan</button>
+            <button type="button" class="ml-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-300">Batal</button>
+          </div>
+        </form>
         @endauth
       </div>
     </div>
@@ -192,6 +201,15 @@
     </div>
   </footer>
 
+  <!-- Alert for success message -->
+  <script>
+    window.onload = function() {
+      // Check if success message is set in session
+      @if(session('success'))
+        alert("{{ session('success') }}");
+      @endif
+    }
+  </script>
 </body>
 
 </html>
