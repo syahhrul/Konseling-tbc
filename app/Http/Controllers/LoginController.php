@@ -56,7 +56,7 @@ class LoginController extends Controller
         $request->validate([
             'userId' => 'required',
             'password' => 'required',
-            'role' => 'required', // Pastikan role terisi
+            // 'role' => 'required', // Pastikan role terisi
         ]);
 
         // // Cek kredensial login

@@ -132,6 +132,10 @@ Route::middleware('auth')->get('/checkharian', function () {
     return view('checkharian');
 })->name('checkharian');
 
+Route::middleware('auth')->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
 Route::get('/register', function () {
     return view('register'); // pastikan Anda sudah memiliki view register.blade.php
 })->name('register');
@@ -166,3 +170,9 @@ Route::get('/pusatinfotbcafterlogin', function () {
 Route::get('/output_pasien', function () {
     return view('output_pasien');
 });
+// Route untuk logout dengan metode POST
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware('auth')->get('/checkharian', [CheckHarianController::class, 'create'])->name('checkharian'); // Rute untuk menampilkan form
+Route::middleware('auth')->post('/checkharian', [CheckHarianController::class, 'store'])->name('checkharian.store'); // Rute untuk menyimpan data form
+
+Route::middleware('auth')->get('/output_pasien', [CheckHarianController::class, 'index'])->name('output_pasien'); // Rute untuk menampilkan data cek harian

@@ -24,7 +24,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'username',
-        'role',
+        // 'role',
         'password',
     ];
 
@@ -59,5 +59,7 @@ class User extends Authenticatable
     public function checkHarians()
     {
         return $this->hasMany(CheckHarian::class, 'user_id'); // relasi ke model CheckHarian
+            return $this->hasMany(CheckHarian::class);
     }
+    
 }

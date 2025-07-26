@@ -90,6 +90,9 @@
             <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
         </div>
         <div class="flex items-center space-x-6">
+            <a href="{{ url('/output_pasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+          <img src="{{ asset('images/ikon_kesehatan.png') }}" alt="Help Icon" class="w-12 h-12" />
+          <span>Informasi</span>
             <a href="{{ url('/dashboard_perawat') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                 <img src="{{ asset('images/icon-profile.png') }}" alt="Profile Icon" class="w-6 h-6" />
                 <span>Profile</span>
@@ -102,6 +105,8 @@
                 <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
                 <span>Bantuan</span>
             </a>
+
+        </a>
         </div>
     </section>
 

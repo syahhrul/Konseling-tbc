@@ -60,6 +60,10 @@
                     <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
                     <span>Bantuan</span>
                 </a>
+        <a href="{{ url('/output_pasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+          <img src="{{ asset('images/ikon_kesehatan.png') }}" alt="Help Icon" class="w-6 h-6" />
+          <span>Informasi</span>
+        </a>
             </div>
         </div>
     </section>

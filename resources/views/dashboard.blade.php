@@ -22,13 +22,8 @@
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
                 <li><a href="{{ url('/tentangafterlogin') }}" class="hover:text-red-600">Tentang</a></li>
                 <li><a href="{{ url('/kegiatanafterlogin') }}" class="hover:text-red-600">Kegiatan</a></li>
-                <!-- Link untuk dashboard berdasarkan role -->
                 @if (Auth::check())
-                    @if (Auth::user()->role == 'perawat')
-                        <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-red-600">Dashboard</a></li>
-                    @elseif (Auth::user()->role == 'pasien')
-                        <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
-                    @endif
+                  <li><a href="{{ url('/dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
                 @endif
                 <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
@@ -80,6 +75,9 @@
     </div>
       <!-- Menu Ikon di bawah Search -->
       <div class="flex items-center space-x-6">
+                <a href="{{ url('/output_pasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+          <img src="{{ asset('images/ikon_kesehatan.png') }}" alt="Help Icon" class="w-12 h-12" />
+          <span>Informasi</span>
         <!-- Profile -->
         <a href="{{ url('/dashboard') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
           <img src="{{ asset('images/icon-profile.png') }}" alt="Profile Icon" class="w-6 h-6" />
@@ -96,6 +94,7 @@
           <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
           <span>Bantuan</span>
         </a>
+        </a>
       </div>
     </div>
   </section>
@@ -109,7 +108,7 @@
         <div class="text-center">
           <img src="{{ asset('images/ikon_profil.png') }}" alt="User Icon" class="w-16 h-16 rounded-full mx-auto mb-4">
           <span class="block text-xl font-semibold">{{ Auth::user()->username }}</span>
-          <p class="text-gray-600">{{ Auth::user()->role }}</p>
+          <p class="text-gray-600">Pasien</p>
         </div>
         @endauth
         <div class="mt-8 space-y-4">

@@ -16,6 +16,7 @@
     </script>
     @endif
 
+    
 
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
@@ -51,6 +52,9 @@
             <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
         </div>
             <div class="flex items-center space-x-6">
+            <a href="{{ url('/output_pasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+          <img src="{{ asset('images/ikon_kesehatan.png') }}" alt="Help Icon" class="w-12 h-12" />
+          <span>Informasi</span>
                 <a href="{{ url('/dashboard') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                     <img src="{{ asset('images/icon-profile.png') }}" alt="Profile Icon" class="w-6 h-6" />
                     <span>Profile</span>
@@ -76,67 +80,47 @@
                 <form action="{{ route('checkharian.store') }}" method="POST">
                     @csrf
                     <div class="space-y-4">
-                        <!-- Frekuensi Batuk -->
+                        <!-- Tanggal -->
                         <div>
-                            <label class="block text-gray-700 font-medium">Frekuensi Batuk*</label>
+                            <label class="block text-gray-700 font-medium">Tanggal*</label>
+                            <input type="date" name="tanggal" class="w-full p-2 border rounded-md text-gray-700" required>
+                        </div>
+
+                        <!-- Suhu -->
+                        <div>
+                            <label class="block text-gray-700 font-medium">Suhu (°C)*</label>
+                            <input type="number" name="suhu" class="w-full p-2 border rounded-md text-gray-700" required>
+                        </div>
+
+                        <!-- Berat -->
+                        <div>
+                            <label class="block text-gray-700 font-medium">Berat (kg)*</label>
+                            <input type="number" name="berat" class="w-full p-2 border rounded-md text-gray-700" required>
+                        </div>
+
+                        <!-- Nafsu Makan -->
+                        <div>
+                            <label class="block text-gray-700 font-medium">Nafsu Makan*</label>
+                            <input type="text" name="nafsu_makan" class="w-full p-2 border rounded-md text-gray-700" required>
+                        </div>
+
+                        <!-- Minum Obat -->
+                        <div>
+                            <label class="block text-gray-700 font-medium">Minum Obat*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="batuk_parah" name="frekuensi_batuk" value="batuk" class="mr-2" required>
-                                <label for="batuk_parah" class="text-gray-700">Batuk</label>
-                                <input type="radio" id="batuk_tidak" name="frekuensi_batuk" value="tidak batuk" class="ml-4 mr-2" required>
-                                <label for="batuk_tidak" class="text-gray-700">Tidak Batuk</label>
+                                <input type="radio" id="minum_ya" name="minum_obat" value="Ya" class="mr-2" required>
+                                <label for="minum_ya" class="text-gray-700">Ya</label>
+                                <input type="radio" id="minum_tidak" name="minum_obat" value="Tidak" class="ml-4 mr-2" required>
+                                <label for="minum_tidak" class="text-gray-700">Tidak</label>
                             </div>
                         </div>
-                        <!-- Panas -->
+
+                        <!-- Catatan Pete -->
                         <div>
-                            <label class="block text-gray-700 font-medium">Panas*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="panas_ya" name="panas" value="panas" class="mr-2" required>
-                                <label for="panas_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="panas_tidak" name="panas" value="tidak panas" class="ml-4 mr-2" required>
-                                <label for="panas_tidak" class="text-gray-700">Tidak</label>
-                            </div>
+                            <label class="block text-gray-700 font-medium">Catatan Pete*</label>
+                            <input type="text" name="catatan_pete" class="w-full p-2 border rounded-md text-gray-700" required>
                         </div>
-                        <!-- Keringat Dingin Pada Malam Hari -->
-                        <div>
-                            <label class="block text-gray-700 font-medium">Keringat Dingin Pada Malam Hari*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="keringat_ya" name="keringat_dingin" value="keringat dingin" class="mr-2" required>
-                                <label for="keringat_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="keringat_tidak" name="keringat_dingin" value="tidak keringat dingin" class="ml-4 mr-2" required>
-                                <label for="keringat_tidak" class="text-gray-700">Tidak</label>
-                            </div>
-                        </div>
-                        <!-- Lupa Minum Obat -->
-                        <div>
-                            <label class="block text-gray-700 font-medium">Lupa Minum Obat*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="lupa_ya" name="lupa_minum_obat" value="lupa minum obat" class="mr-2" required>
-                                <label for="lupa_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="lupa_tidak" name="lupa_minum_obat" value="tidak lupa minum obat" class="ml-4 mr-2" required>
-                                <label for="lupa_tidak" class="text-gray-700">Tidak</label>
-                            </div>
-                            <textarea name="alasan_lupa" placeholder="Isi alasan jika anda lupa minum obat" class="mt-2 w-full p-2 border rounded-md text-gray-700"></textarea>
-                        </div>
-                        <!-- Mual Saat Minum Obat -->
-                        <div>
-                            <label class="block text-gray-700 font-medium">Mual Saat Minum Obat*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="mual_ya" name="mual_saat_minum_obat" value="mual" class="mr-2" required>
-                                <label for="mual_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="mual_tidak" name="mual_saat_minum_obat" value="tidak mual" class="ml-4 mr-2" required>
-                                <label for="mual_tidak" class="text-gray-700">Tidak</label>
-                            </div>
-                        </div>
-                        <!-- Kondisi Berat Badan -->
-                        <div>
-                            <label class="block text-gray-700 font-medium">Kondisi Berat Badan*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="berat_turun" name="berat_badan_turun" value="berat turun" class="mr-2" required>
-                                <label for="berat_turun" class="text-gray-700">Turun</label>
-                                <input type="radio" id="berat_tidak" name="berat_badan_turun" value="berat tidak turun" class="ml-4 mr-2" required>
-                                <label for="berat_tidak" class="text-gray-700">Tidak</label>
-                            </div>
-                        </div>
+
                         <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded-full mt-4">Kirim Jawaban</button>
                     </div>
                 </form>

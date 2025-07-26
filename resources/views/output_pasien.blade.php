@@ -70,13 +70,15 @@
 
     <!-- Hero Section -->
   <section class="hero bg-[#003C62] text-white py-4 px-6 flex items-center justify-between">
-    <!-- Logo dan Judul Dashboard di kiri -->
     <div class="flex items-center space-x-2 mr-4">
       <img src="{{ asset('images/Logo_dashboard.png') }}" alt="Logo Dashboard" class="w-8 h-8 rounded-full" />
       <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
     </div>
-      <!-- Menu Ikon di bawah Search -->
       <div class="flex items-center space-x-6">
+                        <a href="{{ url('/output_pasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+          <img src="{{ asset('images/ikon_kesehatan.png') }}" alt="Help Icon" class="w-12 h-12" />
+          <span>Informasi</span>
+        </a>
         <!-- Profile -->
         <a href="{{ url('/dashboard') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
           <img src="{{ asset('images/icon-profile.png') }}" alt="Profile Icon" class="w-6 h-6" />
@@ -97,101 +99,129 @@
     </div>
   </section>
 
-<div class="container mt-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Identitas Pasien -->
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-500">Identitas Pasien</h3>
-            <ul class="space-y-3">
-                <li><strong>Nama:</strong> R.A.</li>
-                <li><strong>No. Rekam Medis:</strong> RM0021</li>
-                <li><strong>Umur:</strong> 28 Tahun</li>
-                <li><strong>Jenis Kelamin:</strong> Perempuan</li>
-                <li><strong>Jenis TBC:</strong> TBC Paru</li>
-            </ul>
+<!-- Main Content Wrapper (Centered) -->
+<div class="main-content flex justify-center items-center min-h-screen">
+    <div class="container mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Identitas Pasien -->
+            <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-500">Identitas Pasien</h3>
+                    <ul class="space-y-3">
+                        <li><strong>Nama:</strong> {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</li>
+                        <li><strong>No. Rekam Medis:</strong> RM00{{ Auth::user()->id }}</li>
+                        <li><strong>Umur:</strong> {{ \Carbon\Carbon::parse(Auth::user()->birth_date)->age }} Tahun</li>
+                        <li><strong>Jenis Kelamin:</strong> {{ Auth::user()->gender}}</li>
+                        <li><strong>Jenis TBC:</strong> TBC Paru</li>
+                        </ul>
+            </div>
+
+            <!-- Status Pengobatan -->
+            <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-500">Status Pengobatan</h3>
+        <ul class="space-y-3">
+            <li><strong>Status:</strong> 
+             {{ $checkHarian->count() > 0 ? 'Aktif' : 'Nonaktif' }} 
+            </li>
+            <li><strong>Fase:</strong> 
+            {{ $checkHarian->count() > 0 ? 'Intensif' : 'Belum Memulai' }} 
+            </li>
+            <li><strong>Jadwal Kontrol Berikutnya:</strong> 
+                @if ($checkHarian->count() > 0)
+                    {{ \Carbon\Carbon::parse($checkHarian->first()->tanggal)->addDays(33)->format('d F Y') }} 
+                @else
+                    Belum Tersedia
+                @endif
+            </li>
+            <li><strong>Kepatuhan Obat:</strong> 
+                @php
+                $totalHarian = 33;
+                $jumlahInputHari = $checkHarian->count();
+                $persentase = ($jumlahInputHari / $totalHarian) * 100;
+                if ($jumlahInputHari == $totalHarian) {
+                $persentase = 100;
+                }
+                @endphp
+                {{ number_format($persentase, 0) }}%
+            </li>
+        </ul>
+            </div>
         </div>
 
-        <!-- Status Pengobatan -->
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h3 class="text-2xl font-semibold mb-4 text-blue-500">Status Pengobatan</h3>
-            <ul class="space-y-3">
-                <li><strong>Status:</strong> Aktif</li>
-                <li><strong>Fase:</strong> Intensif</li>
-                <li><strong>Jadwal Kontrol Berikutnya:</strong> 24 Juli 2025</li>
-                <li><strong>Kepatuhan Obat:</strong> 90%</li>
-            </ul>
+        <!-- Hasil Cek Harian -->
+        <div class="mt-8 bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+            <h4 class="text-2xl font-semibold mb-4 text-blue-500">Hasil Cek Harian</h4>
+            <table class="min-w-full table-auto border-collapse">
+                <thead>
+                    <tr class="bg-blue-100">
+                        <th class="p-2 border border-blue-500">Tanggal</th>
+                        <th class="p-2 border border-blue-500">Suhu (°C)</th>
+                        <th class="p-2 border border-blue-500">Berat (kg)</th>
+                        <th class="p-2 border border-blue-500">Nafsu Makan</th>
+                        <th class="p-2 border border-blue-500">Minum Obat</th>
+                        <th class="p-2 border border-blue-500">Catatan Pasien</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($checkHarian as $check)
+                    <tr class="border-t">
+                        <td class="p-2 border border-blue-500">{{ \Carbon\Carbon::parse($check->tanggal)->format('d-m-Y') }}</td>
+                        <td class="p-2 border border-blue-500">{{ $check->suhu }}</td>
+                        <td class="p-2 border border-blue-500">{{ $check->berat }}</td>
+                        <td class="p-2 border border-blue-500">{{ $check->nafsu_makan }}</td>
+                        <td class="p-2 border border-blue-500">{{ $check->minum_obat }}</td>
+                        <td class="p-2 border border-blue-500">{{ $check->catatan_pete }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
+
+        <!-- Durasi Pengobatan -->
+   <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+        <h5 class="text-xl font-semibold text-blue-500">Durasi Pengobatan</h5>
+        <p>33 Hari</p>
+        
+        <h5 class="text-xl font-semibold mt-4 text-blue-500">Hari Patuh Obat</h5>
+        @php
+            $tanggalUnik = $checkHarian->pluck('tanggal')->unique();
+            $jumlahHariPatuh = $tanggalUnik->count();
+            $totalHari = 33;
+            $hariPatuh = "$jumlahHariPatuh dari $totalHari";
+        @endphp
+        <p>{{ $hariPatuh }}</p>
     </div>
 
-    <!-- Hasil Cek Harian -->
-    <div class="mt-8 bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-        <h4 class="text-2xl font-semibold mb-4 text-blue-500">Hasil Cek Harian</h4>
-        <table class="min-w-full table-auto border-collapse">
-            <thead>
-                <tr class="bg-blue-100">
-                    <th class="p-2 border border-blue-500">Tanggal</th>
-                    <th class="p-2 border border-blue-500">Suhu (°C)</th>
-                    <th class="p-2 border border-blue-500">Berat (kg)</th>
-                    <th class="p-2 border border-blue-500">Nafsu Makan</th>
-                    <th class="p-2 border border-blue-500">Minum Obat</th>
-                    <th class="p-2 border border-blue-500">Catatan Pete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="border-t">
-                    <td class="p-2 border border-blue-500">19-07-2025</td>
-                    <td class="p-2 border border-blue-500">36,8</td>
-                    <td class="p-2 border border-blue-500">52,2</td>
-                    <td class="p-2 border border-blue-500">Batuk ringan</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Tidak ada</td>
-                </tr>
-                <tr>
-                    <td class="p-2 border border-blue-500">20-07-2025</td>
-                    <td class="p-2 border border-blue-500">37,2</td>
-                    <td class="p-2 border border-blue-500">51,8</td>
-                    <td class="p-2 border border-blue-500">Demam, batuk</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Mual ringan</td>
-                </tr>
-                <tr>
-                    <td class="p-2 border border-blue-500">21-07-2025</td>
-                    <td class="p-2 border border-blue-500">36,9</td>
-                    <td class="p-2 border border-blue-500">52</td>
-                    <td class="p-2 border border-blue-500">Tidak ada</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Kondisi</td>
-                </tr>
-                <tr>
-                    <td class="p-2 border border-blue-500">22-07-2025</td>
-                    <td class="p-2 border border-blue-500">36,6</td>
-                    <td class="p-2 border border-blue-500">52,2</td>
-                    <td class="p-2 border border-blue-500">Baik ada</td>
-                    <td class="p-2 border border-blue-500">Ya</td>
-                    <td class="p-2 border border-blue-500">Membaik</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <!-- Durasi Pengobatan -->
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h5 class="text-xl font-semibold text-blue-500">Durasi Pengobatan</h5>
-            <p>1 Bulan</p>
-            <h5 class="text-xl font-semibold mt-4 text-blue-500">Hari Patuh Obat</h5>
-            <p>30 dari 33</p>
-        </div>
-
-        <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
-            <h5 class="text-xl font-semibold text-blue-500">Hari Gejala Aktif</h5>
-            <p>4 Hari</p>
+            <div class="bg-white p-6 shadow-lg rounded-lg border border-blue-500">
+                <h5 class="text-xl font-semibold text-blue-500">Hari Gejala Aktif</h5>
+                <p>{{ $jumlahHariPatuh }} Hari</p>
+            </div>
         </div>
     </div>
+    
 </div>
 
+    <!-- Tombol Print (Centered) -->
+    <div class="flex justify-center mt-8">
+        <button id="printBtn" class="px-8 py-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">Download Informasi</button>
+    </div>
 
-</div>
+    <!-- Script Print -->
+    <script>
+        document.getElementById('printBtn').addEventListener('click', function () {
+            const content = document.querySelector('.main-content');  // Mengambil elemen dengan class main-content
+
+            // Membuka dialog print
+            const printWindow = window.open('', '', 'height=800,width=800');
+            printWindow.document.write('<html><head><title>Print</title></head><body>');
+            printWindow.document.write(content.innerHTML);  // Menyalin konten yang ingin dicetak
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();  // Memanggil fungsi print
+        });
+    </script>
+
    <!-- Footer -->
     <footer class="text-white">
         <div class="py-8 px-4" style="background-color: #0065A4;">
@@ -226,6 +256,5 @@
             <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>

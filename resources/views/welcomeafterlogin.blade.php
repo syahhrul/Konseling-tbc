@@ -47,11 +47,7 @@
 
     <!-- Menampilkan link Dashboard berdasarkan Role -->
     @if (Auth::check())
-        @if (Auth::user()->role == 'perawat')
-            <li><a href="{{ url('/dashboard_perawat') }}" class="hover:text-yellow-400 {{ Route::is('dashboard_perawat') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
-        @elseif (Auth::user()->role == 'pasien')
-            <li><a href="{{ url('/dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
-        @endif
+        <li><a href="{{ url('/dashboard') }}" class="hover:text-yellow-400 {{ Route::is('dashboard') ? 'text-yellow-300' : '' }}">Dashboard</a></li>
     @endif
 
     <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
