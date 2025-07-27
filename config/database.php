@@ -49,7 +49,7 @@ return [
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'pku_register'), // Perbaiki nama database di sini
             'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', 'naufalganteng88'),
+            'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
