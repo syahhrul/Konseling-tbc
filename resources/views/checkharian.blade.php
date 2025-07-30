@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Check Harian</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="font-sans bg-gray-50">
-
     <!-- Popup Success Message -->
     @if(session('success'))
     <script>
@@ -18,6 +15,8 @@
         }
     </script>
     @endif
+
+    
 
     <!-- Header -->
     <nav class="bg-gray-100 shadow">
@@ -34,7 +33,7 @@
                 <li><a href="{{ url('/dashboard') }}" class="hover:text-red-600">Dashboard</a></li>
                 <li><a href="{{ route('logout') }}" class="px-4 py-2 text-white rounded-lg transition" style="background-color:rgb(251, 34, 5);">Logout</a></li>
             </ul>
-
+            
             <div class="flex items-center space-x-4">
                 @if (Auth::check())
                     <span class="text-gray-900">Halo, {{ Auth::user()->username }} Selamat Datang!</span>
@@ -52,14 +51,10 @@
             <img src="{{ asset('images/Logo_dashboard.png') }}" alt="Logo Dashboard" class="w-8 h-8 rounded-full" />
             <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
         </div>
-
-        <div class="flex flex-col items-end space-y-4">
-            <div class="flex items-center space-x-2">
-                <img src="{{ asset('images/search.png') }}" alt="Search Logo" class="w-6 h-6" />
-                <input type="text" placeholder="Cari..." class="px-4 py-2 rounded-full w-80 bg-white text-gray-900" />
-            </div>
-
             <div class="flex items-center space-x-6">
+            <a href="{{ url('/output_pasien') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+          <img src="{{ asset('images/ikon_kesehatan.png') }}" alt="Help Icon" class="w-12 h-12" />
+          <span>Informasi</span>
                 <a href="{{ url('/dashboard') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                     <img src="{{ asset('images/icon-profile.png') }}" alt="Profile Icon" class="w-6 h-6" />
                     <span>Profile</span>
@@ -68,11 +63,7 @@
                     <img src="{{ asset('images/icon-history.png') }}" alt="Check Harian Icon" class="w-6 h-6" />
                     <span>Check Harian</span>
                 </a>
-                <a href="#" class="flex items-center space-x-2 text-white hover:text-yellow-400">
-                    <img src="{{ asset('images/icon-setting.png') }}" alt="Settings Icon" class="w-6 h-6" />
-                    <span>Pengaturan</span>
-                </a>
-                <a href="#" class="flex items-center space-x-2 text-white hover:text-yellow-400">
+                <a href="{{ url('/bantuan') }}" class="flex items-center space-x-2 text-white hover:text-yellow-400">
                     <img src="{{ asset('images/icon-support.png') }}" alt="Help Icon" class="w-6 h-6" />
                     <span>Bantuan</span>
                 </a>
@@ -89,67 +80,60 @@
                 <form action="{{ route('checkharian.store') }}" method="POST">
                     @csrf
                     <div class="space-y-4">
-                        <!-- Frekuensi Batuk -->
+                        <!-- Tanggal -->
                         <div>
-                            <label class="block text-gray-700 font-medium">Frekuensi Batuk*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="batuk_parah" name="frekuensi_batuk" value="1" class="mr-2" required>
-                                <label for="batuk_parah" class="text-gray-700">Parah</label>
-                                <input type="radio" id="batuk_tidak" name="frekuensi_batuk" value="0" class="ml-4 mr-2" required>
-                                <label for="batuk_tidak" class="text-gray-700">Tidak</label>
+                            <label class="block text-gray-700 font-medium">Tanggal*</label>
+                            <input type="date" name="tanggal" class="w-full p-2 border rounded-md text-gray-700" required>
+                        </div>
+
+                        <!-- Suhu -->
+                        <div>
+                            <label class="block text-gray-700 font-medium">Suhu (°C)*</label>
+                            <input type="number" name="suhu" class="w-full p-2 border rounded-md text-gray-700" required>
+                        </div>
+
+                        <!-- Berat -->
+                        <div>
+                            <label class="block text-gray-700 font-medium">Berat (kg)*</label>
+                            <input type="number" name="berat" class="w-full p-2 border rounded-md text-gray-700" required>
+                        </div>
+
+                        <!-- Nafsu Makan -->
+                        <div>
+                            <label class="block text-gray-700 font-medium">Nafsu Makan*</label>
+                            <div class="flex items-center space-x-4 mt-2">
+                                <div class="flex items-center">
+                                    <input type="radio" id="nafsu_baik" name="nafsu_makan" value="Baik" class="mr-2" required>
+                                    <label for="nafsu_baik" class="text-gray-700">Baik</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="nafsu_normal" name="nafsu_makan" value="Normal" class="mr-2" required>
+                                    <label for="nafsu_normal" class="text-gray-700">Normal</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="nafsu_menurun" name="nafsu_makan" value="Menurun" class="mr-2" required>
+                                    <label for="nafsu_menurun" class="text-gray-700">Menurun</label>
+                                </div>
                             </div>
                         </div>
-                        <!-- Panas -->
+
+                        <!-- Minum Obat -->
                         <div>
-                            <label class="block text-gray-700 font-medium">Panas*</label>
+                            <label class="block text-gray-700 font-medium">Minum Obat*</label>
                             <div class="flex items-center">
-                                <input type="radio" id="panas_ya" name="panas" value="1" class="mr-2" required>
-                                <label for="panas_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="panas_tidak" name="panas" value="0" class="ml-4 mr-2" required>
-                                <label for="panas_tidak" class="text-gray-700">Tidak</label>
+                                <input type="radio" id="minum_ya" name="minum_obat" value="Ya" class="mr-2" required>
+                                <label for="minum_ya" class="text-gray-700">Ya</label>
+                                <input type="radio" id="minum_tidak" name="minum_obat" value="Tidak" class="ml-4 mr-2" required>
+                                <label for="minum_tidak" class="text-gray-700">Tidak</label>
                             </div>
                         </div>
-                        <!-- Keringat Dingin Pada Malam Hari -->
+
+                        <!-- Catatan Pete -->
                         <div>
-                            <label class="block text-gray-700 font-medium">Keringat Dingin Pada Malam Hari*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="keringat_ya" name="keringat_dingin" value="1" class="mr-2" required>
-                                <label for="keringat_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="keringat_tidak" name="keringat_dingin" value="0" class="ml-4 mr-2" required>
-                                <label for="keringat_tidak" class="text-gray-700">Tidak</label>
-                            </div>
+                            <label class="block text-gray-700 font-medium">Catatan Pete*</label>
+                            <input type="text" name="catatan_pete" class="w-full p-2 border rounded-md text-gray-700" required>
                         </div>
-                        <!-- Lupa Minum Obat -->
-                        <div>
-                            <label class="block text-gray-700 font-medium">Lupa Minum Obat*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="lupa_ya" name="lupa_minum_obat" value="1" class="mr-2" required>
-                                <label for="lupa_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="lupa_tidak" name="lupa_minum_obat" value="0" class="ml-4 mr-2" required>
-                                <label for="lupa_tidak" class="text-gray-700">Tidak</label>
-                            </div>
-                            <textarea name="alasan_lupa" placeholder="Isi alasan jika anda lupa minum obat" class="mt-2 w-full p-2 border rounded-md text-gray-700"></textarea>
-                        </div>
-                        <!-- Mual Saat Minum Obat -->
-                        <div>
-                            <label class="block text-gray-700 font-medium">Mual Saat Minum Obat*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="mual_ya" name="mual_saat_minum_obat" value="1" class="mr-2" required>
-                                <label for="mual_ya" class="text-gray-700">Ya</label>
-                                <input type="radio" id="mual_tidak" name="mual_saat_minum_obat" value="0" class="ml-4 mr-2" required>
-                                <label for="mual_tidak" class="text-gray-700">Tidak</label>
-                            </div>
-                        </div>
-                        <!-- Kondisi Berat Badan -->
-                        <div>
-                            <label class="block text-gray-700 font-medium">Kondisi Berat Badan*</label>
-                            <div class="flex items-center">
-                                <input type="radio" id="berat_turun" name="kondisi_berat_badan" value="1" class="mr-2" required>
-                                <label for="berat_turun" class="text-gray-700">Turun</label>
-                                <input type="radio" id="berat_tidak" name="kondisi_berat_badan" value="0" class="ml-4 mr-2" required>
-                                <label for="berat_tidak" class="text-gray-700">Tidak</label>
-                            </div>
-                        </div>
+
                         <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded-full mt-4">Kirim Jawaban</button>
                     </div>
                 </form>
@@ -219,7 +203,5 @@
             <p>Copyright © 2024 tbindonesia.or.id | All rights reserved.</p>
         </div>
     </footer>
-
 </body>
-
 </html>

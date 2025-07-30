@@ -6,6 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PKU Bantul - Tentang Kami Pasien</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animasi gambar hero section masuk */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gambar hero section dengan animasi slide-in */
+        .hero-image {
+            animation: slideIn 1.2s ease-out forwards; /* Menambahkan animasi */
+        }
+
+        /* Efek Hover - Semua gambar naik saat cursor berada di atasnya */
+        img {
+            transition: transform 0.3s ease-in-out; /* Transisi halus untuk efek pergeseran */
+        }
+
+        img:hover {
+            transform: translateY(-10px); /* Menggeser gambar ke atas saat dihover */
+        }
+    </style>
 </head>
 
 <body class="font-sans text-gray-800" style="background-color: #87CEFA;">
@@ -52,7 +79,7 @@
     <!-- Hero Section -->
     <section class="hero bg-[#0f172a] text-white py-20 px-4 flex flex-col md:flex-row items-center">
         <div class="w-full md:w-1/2">
-            <img src="images/fotopku.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-lg shadow-lg" />
+            <img src="images/fotopku.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-lg shadow-lg hero-image" />
         </div>
         <div class="w-full md:w-1/2 text-center md:text-left mt-8 md:mt-0 pl-8">
             <h1 class="text-4xl font-semibold mb-4">Selamat Datang di PKU Bantul</h1>

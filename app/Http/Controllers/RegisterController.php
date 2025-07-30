@@ -33,6 +33,7 @@ class RegisterController extends Controller
 
         return redirect()->route('register.step2');
     }
+    
 
     // Tampilkan halaman Step 2
     public function step2()
@@ -60,9 +61,14 @@ class RegisterController extends Controller
             'email'     => 'required|email|unique:users,email',
             'telepon'   => 'required|string|max:20',
             'username'  => 'required|string|max:50|unique:users,username',
-            'role'      => 'required|in:perawat,pasien',
+            // 'role'      => 'required|in:perawat,pasien',
             'password'  => 'required|string|confirmed|min:6',
         ]);
+
+        Log::info('RegisterController submit data', [
+    'step1' => $step1,
+    'request' => $request->all()
+]);
 
         // Simpan ke database
         try {
@@ -75,7 +81,7 @@ class RegisterController extends Controller
                 'email'      => $request->email,
                 'phone'      => $request->telepon,
                 'username'   => $request->username,
-                'role'       => $request->role,
+                'role'       => 'pengguna',
                 'password'   => Hash::make($request->password),
             ]);
 
@@ -91,6 +97,6 @@ class RegisterController extends Controller
             Log::error('Gagal registrasi: ' . $e->getMessage());
             return back()->withErrors('Terjadi kesalahan saat registrasi. Silakan coba lagi.');
         }
-        
+    
     }
 }

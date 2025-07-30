@@ -14,11 +14,13 @@ class CreateSessionsTable extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary(); // ID session
-            $table->foreignId('user_id')->nullable()->constrained('users'); // Menyimpan ID pengguna (opsional)
-            $table->text('payload'); // Payload session
-            $table->integer('last_activity'); // Timestamp aktivitas terakhir
-            $table->timestamps(); // Menyimpan waktu pembuatan dan update data
+            $table->string('id')->primary();  // ID session
+            $table->foreignId('user_id')->nullable()->constrained('users'); // ID pengguna
+            $table->text('payload');  // Payload session
+            $table->integer('last_activity');  // Timestamp aktivitas terakhir
+            $table->string('ip_address', 255)->nullable(); // Kolom ip_address
+            $table->timestamps(); // Waktu pembuatan dan update data
+
         });
     }
 
@@ -32,3 +34,4 @@ class CreateSessionsTable extends Migration
         Schema::dropIfExists('sessions'); // Menghapus tabel jika migrasi dibatalkan
     }
 }
+

@@ -1,52 +1,46 @@
 <?php
+// file: database/seeders/DatabaseSeeder.php
 
 namespace Database\Seeders;
 
-<<<<<<< HEAD
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
-class UsersTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        DB::table('users')->insert([
-            'first_name' => 'nopal',
-            'last_name' => 'acul',
-            'birth_date' => '2003-12-13',
-            'gender' => 'Laki-laki',
-            'address' => 'koss panji',
-            'phone' => '0895339946290',
-            'email' => 'acul88@gmail.com',
-            'username' => 'aculaja',
-            'role' => 'pasien',
-            'password' => Hash::make('password123'), // Ganti password sesuai kebutuhan
-            'created_at' => now(),
-            'updated_at' => now(),
-=======
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CheckHarian;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Schema::disableForeignKeyConstraints();
+        CheckHarian::truncate();
+        User::truncate();
+        Schema::enableForeignKeyConstraints();
 
+        // Buat satu user Admin
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
->>>>>>> f830dc3 (Initial commit)
+            'first_name' => 'Admin',
+            'last_name' => 'PKU',
+            'birth_date' => '1995-05-18', // Perbaiki format tanggal di sini
+            'username' => 'admin',
+            'email' => 'admin@pkubantul.com',
+            'role' => 'admin',
+            'password' => Hash::make('admin123'),
         ]);
+
+        // Buat 9 user Pengguna biasa dan data check-in untuk mereka
+        User::factory(9)->create()->each(function ($user) {
+            $treatmentStartDate = Carbon::instance(fake()->dateTimeBetween('-6 months', 'now'));
+            $treatmentEndDate = $treatmentStartDate->copy()->addDays(29);
+
+            for ($i = 0; $i < 30; $i++) {
+                CheckHarian::factory()->create([
+                    'user_id' => $user->id,
+                    'tanggal' => fake()->dateTimeBetween($treatmentStartDate, $treatmentEndDate),
+                ]);
+            }
+        });
     }
 }

@@ -14,7 +14,7 @@ class AuthController extends Controller
 
         // Jika kolom login bukan "email", ubah sesuai database (misalnya "username")
         if (Auth::attempt(['username' => $credentials['userId'], 'password' => $credentials['password']])) {
-            return redirect()->route('welcome.after.login');
+            return redirect()->route('welcomeafterlogin');
         }
 
         return back()->withErrors([

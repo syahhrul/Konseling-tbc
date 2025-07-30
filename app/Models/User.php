@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -18,17 +16,17 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-    'first_name',
-    'last_name',
-    'birth_date',
-    'gender',
-    'address',
-    'email',
-    'phone',
-    'username',
-    'role',
-    'password',
-];
+        'first_name',
+        'last_name',
+        'birth_date',
+        'gender',
+        'address',
+        'email',
+        'phone',
+        'username',
+        'role',
+        'password',
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -49,7 +47,19 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password' => 'hashed', // memastikan password di-hash
+            'birth_date' => 'date', // memastikan birth_date di-cast sebagai tanggal
         ];
     }
+
+    /**
+     * Relasi: User memiliki banyak CheckHarian
+     * Mengambil semua data check_harian terkait dengan user
+     */
+    public function checkHarians()
+    {
+        return $this->hasMany(CheckHarian::class, 'user_id'); // relasi ke model CheckHarian
+            return $this->hasMany(CheckHarian::class);
+    }
+    
 }

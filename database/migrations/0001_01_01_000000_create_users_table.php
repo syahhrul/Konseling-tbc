@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->string('role');
+            $table->string('role')->default('pengguna'); 
             $table->string('password');
             $table->timestamps();
         });

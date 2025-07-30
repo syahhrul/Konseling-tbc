@@ -9,12 +9,18 @@ class CheckHarian extends Model
 {
     use HasFactory;
 
-    // Menentukan nama tabel yang digunakan
-    protected $table = 'check_harian';
+    // Tentukan nama tabel jika tidak sesuai dengan konvensi Laravel
+    protected $table = 'check_harian';  // Pastikan nama tabel sesuai di database
 
-    // Tentukan kolom yang dapat diisi (mass assignable)
+    // Tentukan kolom yang dapat diisi
     protected $fillable = [
-        'user_id', 'frekuensi_batuk', 'panas', 'keringat_dingin', 
-        'lupa_minum_obat', 'alasan_lupa', 'mual_saat_minum_obat', 'berat_badan_turun'
+        'user_id', 'tanggal', 'suhu', 'berat', 'nafsu_makan', 'minum_obat', 'catatan_pete',
     ];
+
+    // Relasi dengan user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
+

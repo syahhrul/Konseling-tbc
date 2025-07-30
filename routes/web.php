@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CheckHarianController;
+use App\Http\Controllers\NewPasswordController;
+use App\Http\Controllers\ProfileController;
 
+Route::post('/update-profile', [ProfileController::class, 'update'])->name('update.profile');
 
 // Register multi-step
 Route::get('/register/step1', [RegisterController::class, 'step1'])->name('register.step1');
@@ -54,9 +57,7 @@ Route::get('/tentang', function () {
     return view('tentang');
 });
 
-Route::get('/kegiatan', function () {
-    return view('kegiatan');
-});
+
 
 
 // Route::get('/dashboard', function () {
@@ -115,16 +116,63 @@ Route::middleware('auth')->get('/settings', function () {
 // Logout route
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/tentang', function () {
+    return view('tentang');
+})->name('tentang');
+
 Route::get('/tentangafterlogin', function () {
     return view('tentangafterlogin');
 })->name('tentangafterlogin');
 
+Route::get('/kegiatanafterlogin', function () {
+    return view('kegiatanafterlogin');
+})->name('kegiatanafterlogin');
+
 Route::middleware('auth')->get('/checkharian', function () {
     return view('checkharian');
 })->name('checkharian');
+
+Route::middleware('auth')->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::get('/register', function () {
     return view('register'); // pastikan Anda sudah memiliki view register.blade.php
 })->name('register');
 
 Route::post('/checkharian', [CheckHarianController::class, 'store'])->name('checkharian.store');
+
+Route::get('/bantuan', function () {
+    return view('bantuan'); // pastikan Anda sudah memiliki view bantuan.blade.php
+})->name('bantuan');
+
+// Route untuk dashboard perawat
+Route::get('/dashboard_perawat', function () {
+    return view('dashboard_perawat');  // Mengarah ke halaman dashboard_perawat.blade.php
+})->name('dashboard_perawat');
+
+// Route::get('/datapasien', function () {
+//     return view('datapasien');  // Mengarah ke halaman dashboardperawat.blade.php
+// })->name('datapasien');
+
+Route::get('/lupapassword', function () {
+    return view('lupapassword');  // Mengarah ke halaman dashboardperawat.blade.php
+})->name('lupapassword');
+
+Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+Route::post('/reset-password', [NewPasswordController::class, 'update'])->name('password.update');
+
+Route::get('/pusatinfotbcafterlogin', function () {
+    return view('pusatinfotbcafterlogin');
+})->name('pusatinfotbcafterlogin');
+
+Route::get('/output_pasien', function () {
+    return view('output_pasien');
+});
+// Route untuk logout dengan metode POST
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware('auth')->get('/checkharian', [CheckHarianController::class, 'create'])->name('checkharian'); // Rute untuk menampilkan form
+Route::middleware('auth')->post('/checkharian', [CheckHarianController::class, 'store'])->name('checkharian.store'); // Rute untuk menyimpan data form
+
+Route::middleware('auth')->get('/output_pasien', [CheckHarianController::class, 'index'])->name('output_pasien'); // Rute untuk menampilkan data cek harian
