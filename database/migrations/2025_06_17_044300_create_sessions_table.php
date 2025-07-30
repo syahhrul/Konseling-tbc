@@ -20,6 +20,7 @@ class CreateSessionsTable extends Migration
             $table->integer('last_activity');  // Timestamp aktivitas terakhir
             $table->string('ip_address', 255)->nullable(); // Kolom ip_address
             $table->timestamps(); // Waktu pembuatan dan update data
+
         });
     }
 
