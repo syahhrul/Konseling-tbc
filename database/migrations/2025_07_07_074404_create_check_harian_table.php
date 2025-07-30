@@ -25,6 +25,7 @@ public function up()
 }
 
 
+
     /**
      * Reverse the migrations.
      */
@@ -33,3 +34,4 @@ public function up()
         Schema::dropIfExists('check_harian');
     }
 };
+
