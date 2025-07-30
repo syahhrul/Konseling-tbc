@@ -151,9 +151,9 @@ Route::get('/dashboard_perawat', function () {
     return view('dashboard_perawat');  // Mengarah ke halaman dashboard_perawat.blade.php
 })->name('dashboard_perawat');
 
-Route::get('/datapasien', function () {
-    return view('datapasien');  // Mengarah ke halaman dashboardperawat.blade.php
-})->name('datapasien');
+// Route::get('/datapasien', function () {
+//     return view('datapasien');  // Mengarah ke halaman dashboardperawat.blade.php
+// })->name('datapasien');
 
 Route::get('/lupapassword', function () {
     return view('lupapassword');  // Mengarah ke halaman dashboardperawat.blade.php

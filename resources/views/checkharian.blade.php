@@ -101,7 +101,20 @@
                         <!-- Nafsu Makan -->
                         <div>
                             <label class="block text-gray-700 font-medium">Nafsu Makan*</label>
-                            <input type="text" name="nafsu_makan" class="w-full p-2 border rounded-md text-gray-700" required>
+                            <div class="flex items-center space-x-4 mt-2">
+                                <div class="flex items-center">
+                                    <input type="radio" id="nafsu_baik" name="nafsu_makan" value="Baik" class="mr-2" required>
+                                    <label for="nafsu_baik" class="text-gray-700">Baik</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="nafsu_normal" name="nafsu_makan" value="Normal" class="mr-2" required>
+                                    <label for="nafsu_normal" class="text-gray-700">Normal</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="nafsu_menurun" name="nafsu_makan" value="Menurun" class="mr-2" required>
+                                    <label for="nafsu_menurun" class="text-gray-700">Menurun</label>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Minum Obat -->
