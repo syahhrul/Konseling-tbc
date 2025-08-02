@@ -53,7 +53,6 @@
             <a href="#" class="flex items-center space-x-3">
                 <img src="{{ asset('images/logouad.jpg') }}" alt="Logo UAD" class="h-10" />
                 <img src="{{ asset('images/logopku.png') }}" alt="Logo PKU" class="h-10" />
-                <span class="font-semibold text-lg text-gray-900">PKU BANTUL</span>
             </a>
             <ul class="hidden md:flex space-x-8" style="color: #0065A4;">
                 <li><a href="/welcomeafterlogin" class="hover:text-red-600">Beranda</a></li>
